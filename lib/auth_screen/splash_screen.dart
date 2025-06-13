@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hfn_work/auth_screen/welcome.dart';
 import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
 import 'package:hfn_work/main.dart';
-import 'package:hfn_work/main_screen/admin_screen/admin_home_screen.dart';
-import 'package:hfn_work/main_screen/super_admin_screen/super_admin_home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class splash_screen extends StatefulWidget {
@@ -81,18 +79,15 @@ class _splash_screen extends State<splash_screen> with WidgetsBindingObserver {
 
     Timer(
       const Duration(seconds: 5),
-      () => Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => check
-                ? userType == '0'
-                    ? bottom_navigation()
-                    : userType == '1'
-                        ? super_admin_home_screen()
-                        : admin_home_screen()
-                : welcome(),
-          ),
-          (route) => false),
+          () => Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => check
+              ? bottom_navigation()
+              : welcome(),
+        ),
+            (route) => false,
+      ),
     );
   }
 

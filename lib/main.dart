@@ -41,9 +41,16 @@ String? selectedNotificationPayload;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
-  LocalNotification().initialize();
+
+  tz.initializeTimeZones();
+  final String localZone = await FlutterNativeTimezone.getLocalTimezone();
+  tz.setLocalLocation((tz.getLocation(localZone)));
+
+  await Firebase.initializeApp();
+  await LocalNotification().initialize();
+// load saved prefs or fallback
+
 
   HttpOverrides.global = MyHttpOverrides();
 

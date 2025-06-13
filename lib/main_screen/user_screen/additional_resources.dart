@@ -10,7 +10,7 @@ class AdditionalResources extends StatefulWidget {
 
 final controller = WebViewController()
   ..setJavaScriptMode(JavaScriptMode.unrestricted)
-  ..setBackgroundColor(const Color(0x00000000))
+  ..setBackgroundColor(const Color(0xFFF6F4F5))
   ..setNavigationDelegate(
     NavigationDelegate(
       onProgress: (int progress) {
@@ -32,6 +32,7 @@ class _AdditionalResourcesState extends State<AdditionalResources> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF6F4F5),
       body: Padding(
         padding:
         const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 40),
@@ -42,25 +43,20 @@ class _AdditionalResourcesState extends State<AdditionalResources> {
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                     children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Image.asset(
-                          'assets/icons/back_arrow.png',
-                          height: 30,
-                          width: 30,
-                        ),
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF485370)),
+                        onPressed: () => Navigator.pop(context),
                       ),
                       const Expanded(child:  Text(
                         'Additional Resources',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           // decoration: TextDecoration.underline,
-                            color: Color(0xff744EC3),
-                            fontSize: 30,
-                            fontFamily: 'Avenir',
+                            color: Color(0xFF485370),
+                            fontSize: 28,
+                            fontFamily: 'WorkSans',
                             fontWeight: FontWeight.w400),
                       ),),
                       const SizedBox(

@@ -3,12 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hfn_work/auth_screen/welcome.dart';
+import 'package:hfn_work/main_screen/user_screen/video/play_video_bedtime_screen.dart';
+import 'package:hfn_work/main_screen/user_screen/video/play_video_morning_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:hfn_work/auth_screen/login.dart';
 import 'package:hfn_work/main.dart';
-import 'package:hfn_work/main_screen/user_screen/video/play_video_intro_screen.dart';
-import 'package:hfn_work/main_screen/user_screen/video/play_video_outro_screen.dart';
-import 'package:hfn_work/main_screen/user_screen/week/week_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class home_screen extends StatefulWidget {
@@ -17,7 +16,8 @@ class home_screen extends StatefulWidget {
 }
 
 class _home_screen extends State<home_screen> with RouteAware {
-  var doneWeek;
+  int? doneWeek;
+  int? doneDay;
   bool showLoader = false;
   bool check = false;
 
@@ -44,70 +44,56 @@ class _home_screen extends State<home_screen> with RouteAware {
     updateDayAndWeek();
   }
 
-  getUserData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
+  Future<void> getUserData() async {
+    final pref = await SharedPreferences.getInstance();
     setState(() {
-      check = pref.get('user_id') != null ? true : false;
+      check = pref.get('user_id') != null;
     });
-    if (pref.get('user_id') != null) {
+    if (check) {
       updateDayAndWeek();
     }
   }
 
   int daysBetween(DateTime from, DateTime to) {
-    from = DateTime(from.year, from.month, from.day);
-    to = DateTime(to.year, to.month, to.day);
-    return (to.difference(from).inHours / 24).round();
+    final f = DateTime(from.year, from.month, from.day);
+    final t = DateTime(to.year, to.month, to.day);
+    return (t.difference(f).inHours / 24).round();
   }
 
-  updateDayAndWeek() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    FirebaseFirestore.instance
-        .collection('user')
-        .where('id', isEqualTo: pref.getString('user_id'))
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        if (doc != null) {
-          Map<String, dynamic>? documentData =
-              doc.data() as Map<String, dynamic>?; //if it is a single document
-
-          pref.setString('user_id', documentData!['id']);
-          pref.setString('user_type', documentData['user_type']);
-        } else {
-          setState(() {
-            showLoader = false;
-          });
-        }
+  Future<void> updateDayAndWeek() async {
+    final pref = await SharedPreferences.getInstance();
+    final userId = pref.getString('user_id');
+    if (userId == null) {
+      setState(() {
+        showLoader = false;
       });
-    }).whenComplete(() {
-      FirebaseFirestore.instance
-          .collection('user')
-          .where('id', isEqualTo: pref.getString('user_id'))
-          .get()
-          .then((QuerySnapshot querySnapshot) => {
-                querySnapshot.docs.forEach((doc) {
-                  if (doc != null) {
-                    Map<String, dynamic>? documentData = doc.data()
-                        as Map<String, dynamic>?; //if it is a single document
+      return;
+    }
 
-                    setState(() {
-                      doneWeek = daysBetween(DateTime.parse(documentData!['start_date']), (DateTime.now())) ~/ 7;
-                      print(doneWeek);
-                      showLoader = false;
-                    });
-                  } else {
-                    setState(() {
-                      showLoader = false;
-                    });
-                  }
-                }),
-              });
+    final userQuery = FirebaseFirestore.instance
+        .collection('user')
+        .where('id', isEqualTo: userId);
+
+    userQuery.get().then((snap) {
+      for (var doc in snap.docs) {
+        final data = doc.data() as Map<String, dynamic>;
+        final startDate = DateTime.parse(data['start_date'] as String);
+        final totalDays = daysBetween(startDate, DateTime.now());
+        setState(() {
+          doneWeek = totalDays ~/ 7;
+          doneDay = totalDays % 7;
+          showLoader = false;
+        });
+      }
+    }).catchError((_) {
+      setState(() {
+        showLoader = false;
+      });
     });
   }
-  // add this logout helper:
+
   Future<void> _logout() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final pref = await SharedPreferences.getInstance();
     await pref.clear();
     Navigator.pushAndRemoveUntil(
       context,
@@ -118,708 +104,205 @@ class _home_screen extends State<home_screen> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
+    final hour = DateTime.now().hour;
+    final greeting = hour < 12
+        ? 'Good Morning!'
+        : hour < 18
+        ? 'Good Afternoon!'
+        : 'Good Evening!';
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        title: Text(
-          'Home Page',
-          style: TextStyle(
-            color: Color(0xff744EC3),
-            fontSize: 32,
-            fontFamily: 'GoudyBookletterRegular',
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout, color: Color(0xff744EC3)),
-            onPressed: _logout,
-            tooltip: 'Log out',
-          ),
-        ],
-      ),
-      body: Padding(
-        padding:
-            const EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 35),
-        child: Column(
-          children: <Widget>[
-            check
-                ? const Text(
-                    'Home Page',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color(0xff744EC3),
-                        fontSize: 40,
-                        fontFamily: 'GoudyBookletterRegular',
-                        fontWeight: FontWeight.w400),
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 30,
-                      ),
-                      const Text(
-                        'Home Page',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Color(0xff744EC3),
-                            fontSize: 40,
-                            fontFamily: 'GoudyBookletterRegular',
-                            fontWeight: FontWeight.w400),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => login(),
-                              ),
-                              (route) => false);
-                        },
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Color(0xff744EC3),
-                              fontSize: 25,
-                              fontFamily: 'GoudyBookletterRegular',
-                              fontWeight: FontWeight.w400),
+      backgroundColor: const Color(0xFFF6F4F5),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                greeting,
+                style: const TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w300,
+                  color: Color(0xFF333333),
+                ),
+              ),
+              const SizedBox(height: 25),
+              const Text(
+                'Start your day…',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF333333),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Card(
+                color: Colors.white,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: const BorderSide(
+                    color: Color(0xFF333333),
+                    width: 2,
+                  ),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(16),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => play_video_morning_screen(
+                          title: 'Morning Practice',
+                          url: 'assets/audio/morning.mp3',
+                          week: doneWeek ?? 0,
+                          day: doneDay ?? 0,
                         ),
                       ),
-                    ],
-                  ),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.only(top: 20),
-                children: <Widget>[
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(32.0),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => play_video_intro_screen(
-                              title: 'Intro',
-                              week: 0,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Intro',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
+                    );
+                  },
+                  child: Container(
+                    height: 140,
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Morning Practice',
+                                style: TextStyle(
+                                  fontFamily: 'WorkSans',
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: const Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek > 0
-                                ? Image.asset(
-                                    'assets/icons/right.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
+                              SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.access_time,
+                                    size: 20,
+                                    color: Color(0xFF666666),
                                   ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(32.0),
-                      onTap: doneWeek != null && doneWeek >= 0
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week One',
-                                    week: 1,
+                                  SizedBox(width: 4),
+                                  Text(
+                                    '10:02',
+                                    style: TextStyle(color: Color(0xFF666666)),
                                   ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week One',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
+                                ],
                               ),
-                            ),
+                            ],
                           ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: const Color(0xffB993BC),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/waterfall.png',
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 0
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 0
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 1
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week Two',
-                                    week: 2,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week Two',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 1
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 1
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 2
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week Three',
-                                    week: 3,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week Three',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: const Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 2
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 2
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 3
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week Four',
-                                    week: 4,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week Four',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 3
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 3
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 4
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week Four',
-                                    week: 5,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week Five',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 4
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 4
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 5
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => week_screen(
-                                    title: 'Week Six',
-                                    week: 6,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Week Six',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 5
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 5
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: InkWell(
-                      onTap: doneWeek != null && doneWeek >= 6
-                          ? () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => play_video_outro_screen(
-                                    title: 'Outro',
-                                    week: 7,
-                                  ),
-                                ),
-                              );
-                            }
-                          : () {
-                              Fluttertoast.showToast(
-                                  msg: 'First Complete Previous Step',
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 3,
-                                  backgroundColor: Color(0xffC299F6),
-                                  textColor: Colors.white);
-                            },
-                      borderRadius: BorderRadius.circular(32.0),
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 30, top: 10, bottom: 10),
-                                child: Text(
-                                  'Outro',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 33,
-                                      fontFamily: 'Anaheim'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: doneWeek != null && doneWeek == 6
-                                ? Image.asset(
-                                    'assets/icons/next_arrow.png',
-                                    height: 35,
-                                    width: 35,
-                                  )
-                                : doneWeek != null && doneWeek > 6
-                                    ? Image.asset(
-                                        'assets/icons/right.png',
-                                        height: 35,
-                                        width: 35,
-                                      )
-                                    : Image.asset(
-                                        'assets/icons/lock.png',
-                                        height: 35,
-                                        width: 35,
-                                      ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 40),
+              const Text(
+                'End your day…',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF333333),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Card(
+                color: Colors.white,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: const BorderSide(
+                    color: Color(0xFF333333),
+                    width: 2,
+                  ),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(16),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => play_video_bedtime_screen(
+                          title: 'Bedtime Practice',
+                          url: 'assets/audio/bedtime.mp3',
+                          week: doneWeek ?? 0,
+                          day: doneDay ?? 0,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 140,
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Bedtime Practice',
+                                style: TextStyle(
+                                  fontFamily: 'WorkSans',
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.access_time,
+                                    size: 20,
+                                    color: Color(0xFF666666),
+                                  ),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    '10:02',
+                                    style: TextStyle(color: Color(0xFF666666)),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/forest.png',
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const Spacer(),
+            ],
+          ),
         ),
       ),
     );

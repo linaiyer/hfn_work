@@ -42,72 +42,76 @@ class _bottom_navigation extends State<bottom_navigation> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
-    Color greyColor = const Color(0xFF7F7F7F);
+    final greyColor = const Color(0xFFF6F4F5);
+
     return Scaffold(
-      body: Scaffold(
-        body: IndexedStack(
-          index: currentIndex,
-          children: [
-            for (final tabItem in TabNavigationItem.items) tabItem.page!,
+      body: IndexedStack(
+        index: currentIndex,
+        children: [
+          for (final tabItem in TabNavigationItem.items) tabItem.page!,
+        ],
+      ),
+
+      bottomNavigationBar: Container(
+        height: 100,               // <–– make the bar taller
+        color: greyColor,         // <–– your desired background
+        child: BottomNavigationBar(
+          backgroundColor: greyColor,  // ensure the bar itself is the same color
+          currentIndex: currentIndex,
+          onTap: check
+              ? _onItemTapped
+              : (i) => Fluttertoast.showToast(
+            msg: 'Do login first',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: greyColor,
+            textColor: Colors.white,
+          ),
+
+          type: BottomNavigationBarType.fixed,
+          iconSize: 60,                // <–– bump the icon size
+
+          selectedIconTheme: IconThemeData(
+            size: 40,                   // <–– selected icon even larger
+            color: appColor,
+          ),
+          unselectedIconTheme: IconThemeData(
+            size: 40,                   // <–– unselected a bit smaller
+            color: Colors.grey,
+          ),
+
+          selectedItemColor: appColor,
+          unselectedItemColor: Colors.grey,
+
+          selectedFontSize: 0,         // hide labels (you had empty strings)
+          unselectedFontSize: 0,
+
+          items: [
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                currentIndex == 0
+                    ? 'assets/icons/home_selected.png'
+                    : 'assets/icons/home_unselected.png',
+                width: 60,
+                height: 60,
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                currentIndex == 1
+                    ? 'assets/icons/settings_selected.png'
+                    : 'assets/icons/settings_unselected.png',
+                width: 60,
+                height: 60,
+              ),
+              label: '',
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: check
-            ? (index) {
-                _onItemTapped(index);
-                // currentIndex = index;
-                // if (mounted) setState(() {});
-              }
-            : (index) {
-                Fluttertoast.showToast(
-                    msg: 'Do login first',
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 3,
-                    backgroundColor: Color(0xffC299F6),
-                    textColor: Colors.white);
-              },
-        unselectedIconTheme: IconThemeData(color: greyColor),
-        selectedIconTheme: IconThemeData(color: appColor),
-        selectedLabelStyle: multiRegular(size: 12, textColor: appColor),
-        unselectedLabelStyle:
-            multiRegular(size: 12, textColor: const Color(0xFF7F7F7F)),
-        unselectedItemColor: greyColor,
-        selectedItemColor: appColor,
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 12.0,
-        unselectedFontSize: 12.0,
-        items: [
-          BottomNavigationBarItem(
-              icon: bottomIcon(
-                currentIndex == 0
-                    ? "assets/icons/home_selected.png"
-                    : "assets/icons/home_unselected.png",
-              ),
-              label: ""),
-          BottomNavigationBarItem(
-            icon: bottomIcon(
-              currentIndex == 1
-                  ? "assets/icons/setting_selected.png"
-                  : "assets/icons/setting_unselected.png",
-            ),
-            label: "",
-          )
-        ],
-      ),
     );
   }
-
-  Widget bottomIcon(String image) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 5, top: 5),
-      child: Image.asset(
-        image,
-        height: 20,
-      ),
-    );
   }
-}

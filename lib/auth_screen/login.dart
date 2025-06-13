@@ -12,8 +12,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
-import 'package:hfn_work/main_screen/admin_screen/admin_home_screen.dart';
-import 'package:hfn_work/main_screen/super_admin_screen/super_admin_home_screen.dart';
 import 'package:hfn_work/notification/push_notification_handler.dart';
 
 class login extends StatefulWidget {

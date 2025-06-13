@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hfn_work/auth_screen/login.dart';
 import 'package:hfn_work/main.dart';
-import 'package:hfn_work/main_screen/terms_of_use.dart';
-import 'package:hfn_work/main_screen/user_screen/additional_resources.dart';
+import 'package:hfn_work/main_screen/user_screen/settings_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:intl/intl.dart';
 
 class profile_screen extends StatefulWidget {
   @override
@@ -14,24 +15,31 @@ class profile_screen extends StatefulWidget {
 }
 
 class _profile_screen extends State<profile_screen> with RouteAware {
-  Map<String, dynamic>? profileData;  // now holds a single doc’s data
-  bool check = false;
+  Map<String, dynamic>? profileData;
+  bool thisWeek = true;
+
+  // dynamic chart data
+  List<FlSpot> morningSpots = [];
+  List<FlSpot> bedtimeSpots = [];
+  int daysCount = 7;
 
   @override
   void initState() {
     super.initState();
-    getUserData();
+    _loadUser();
+    _loadStats();
   }
 
   @override
   void didChangeDependencies() {
-    routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
+    routeObserver.subscribe(this, ModalRoute.of(context)! as PageRoute);
     super.didChangeDependencies();
   }
 
   @override
   void didPopNext() {
-    getUserData();
+    _loadUser();
+    _loadStats();
   }
 
   @override
@@ -40,37 +48,57 @@ class _profile_screen extends State<profile_screen> with RouteAware {
     super.dispose();
   }
 
-  Future<void> getUserData() async {
+  Future<void> _loadUser() async {
     final pref = await SharedPreferences.getInstance();
     final uid = pref.getString('user_id');
-    setState(() {
-      check = uid != null;
-    });
     if (uid != null) {
-      await getUserProfile(uid);
+      final doc = await FirebaseFirestore.instance
+          .collection('user')
+          .doc(uid)
+          .get();
+      if (doc.exists) setState(() => profileData = doc.data());
     }
   }
 
-  Future<void> getUserProfile(String uid) async {
-    final doc = await FirebaseFirestore.instance
-        .collection('user')
-        .doc(uid)
+  Future<void> _loadStats() async {
+    final prefs = await SharedPreferences.getInstance();
+    final uid = prefs.getString('user_id');
+    if (uid == null) return;
+
+    daysCount = thisWeek ? 7 : 30;
+    final cutoffDate = DateTime.now().subtract(Duration(days: daysCount - 1));
+    final cutoffStr = DateFormat('yyyy-MM-dd').format(cutoffDate);
+
+    final snap = await FirebaseFirestore.instance
+        .collection('listeningStats')
+        .where('userId', isEqualTo: uid)
+        .where('date', isGreaterThanOrEqualTo: cutoffStr)
         .get();
-    if (doc.exists) {
-      setState(() {
-        profileData = doc.data();
-      });
+
+    // map date->data
+    final Map<String, Map<String, dynamic>> raw = {
+      for (var doc in snap.docs) doc['date'] as String: doc.data() as Map<String, dynamic>
+    };
+
+    final List<FlSpot> mSpots = [];
+    final List<FlSpot> bSpots = [];
+    for (int i = 0; i < daysCount; i++) {
+      final date = cutoffDate.add(Duration(days: i));
+      final key = DateFormat('yyyy-MM-dd').format(date);
+      final entry = raw[key];
+      final mSec = entry != null ? (entry['morningSec'] as num?)?.toInt() ?? 0 : 0;
+      final bSec = entry != null ? (entry['bedtimeSec'] as num?)?.toInt() ?? 0 : 0;
+      mSpots.add(FlSpot(i + 1.toDouble(), mSec / 60));
+      bSpots.add(FlSpot(i + 1.toDouble(), bSec / 60));
     }
+
+    setState(() {
+      morningSpots = mSpots;
+      bedtimeSpots = bSpots;
+    });
   }
 
-  Future<void> _launchURL() async {
-    const url = 'https://www.heartfulnessinstitute.org/';
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: true);
-    }
-  }
-
-  void logout() async {
+  void _logout() async {
     final pref = await SharedPreferences.getInstance();
     await pref.clear();
     Navigator.pushAndRemoveUntil(
@@ -80,192 +108,186 @@ class _profile_screen extends State<profile_screen> with RouteAware {
     );
   }
 
+  void _launchURL() async {
+    const url = 'https://www.heartfulnessinstitute.org/';
+    if (await canLaunch(url)) await launch(url, forceWebView: true);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final displayName = profileData?['name'] as String?;
-    final userName    = profileData?['userName'] as String?;
-    final titleText = displayName?.isNotEmpty == true
-        ? displayName!
-        : (userName ?? '');
+    final name = profileData?['name'] as String? ?? 'Your Name';
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(
-            left: 15, right: 15, top: 30, bottom: 15),
-        child: Column(
-          children: <Widget>[
-            const Text(
-              'Settings',
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: Color(0xff744EC3),
-                fontSize: 40,
-                fontFamily: 'GoudyBookletterRegular',
-                fontWeight: FontWeight.w400,
+      backgroundColor: const Color(0xFFF6F4F5),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 16,
+              left: 16,
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => settings_screen()),
+                ),
+                child: Image.asset(
+                  'assets/icons/settings.png',
+                  width: 50,
+                  height: 50,
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.only(top: 15),
-                children: <Widget>[
-                  // avatar
-                  Center(
-                    child: Image.asset(
-                      'assets/images/profile_avater.png',
-                      height: 180,
-                      width: 180,
+            Column(
+              children: [
+                const SizedBox(height: 50),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.35,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: const Color(0xFF485370), width: 2),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(2, 4)),
+                      ],
+                    ),
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/icons/default_prof.png',
+                          width: 70,
+                          height: 70,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          name,
+                          style: const TextStyle(
+                            fontFamily: 'WorkSans',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF485370),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 8),
-
-                  // name or username
-                  if (profileData != null)
-                    Text(
-                      titleText,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Color(0xff485370),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Anaheim',
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  'Welcome!',
+                  style: TextStyle(
+                    fontFamily: 'WorkSans',
+                    fontSize: 35,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF485370),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                      'My Progress',
+                      style: TextStyle(
+                        fontFamily: 'WorkSans',
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF485370),
                       ),
                     ),
-
-                  const SizedBox(height: 20),
-
-                  // log out button
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(32.0),
-                      onTap: logout,
-                      child: Row(
-                        children: <Widget>[
-                          const Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 20, top: 10, bottom: 10),
-                                child: Text(
-                                  'Log out',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 30,
-                                      fontFamily: 'Anaheim'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        _ToggleBtn(
+                          label: 'This Week',
+                          selected: thisWeek,
+                          onTap: () => setState(() {
+                            thisWeek = true;
+                            _loadStats();
+                          }),
+                        ),
+                        const SizedBox(width: 12),
+                        _ToggleBtn(
+                          label: 'This Month',
+                          selected: !thisWeek,
+                          onTap: () => setState(() {
+                            thisWeek = false;
+                            _loadStats();
+                          }),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Card(
+                      color: const Color(0xFF0F75BC).withOpacity(0.03),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      elevation: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: LineChart(
+                          LineChartData(
+                            backgroundColor: Colors.white,
+                            gridData: FlGridData(show: true),
+                            borderData: FlBorderData(show: true),
+                            titlesData: FlTitlesData(
+                              bottomTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                  showTitles: true,
+                                  interval: 1,
+                                  getTitlesWidget: (value, meta) => Text(value.toInt().toString()),
                                 ),
                               ),
-                            ),
-                          ),
-                          Container(
-                            width: 1,
-                            height: 50,
-                            color: Color(0xffB993BC),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15),
-                            child: Image.asset(
-                              'assets/icons/next_arrow.png',
-                              height: 35,
-                              width: 35,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // Additional Resources
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(32.0),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => AdditionalResources()),
-                        );
-                      },
-                      child: Row(
-                        children: const <Widget>[
-                          Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 20, top: 10, bottom: 10),
-                                child: Text(
-                                  'Additional Resources',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 26,
-                                      fontFamily: 'Anaheim'),
+                              leftTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                  showTitles: true,
+                                  interval: 5,
+                                  getTitlesWidget: (value, meta) => Text(value.toInt().toString()),
                                 ),
                               ),
+                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
                             ),
-                          ),
-                          _DividerIcon(),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // Terms and Conditions
-                  Card(
-                    color: const Color(0xffF8EEF9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(32.0),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => TermsOfUse()),
-                        );
-                      },
-                      child: Row(
-                        children: const <Widget>[
-                          Expanded(
-                            child: SizedBox(
-                              height: 60,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: 20, top: 10, bottom: 10),
-                                child: Text(
-                                  'Terms and Conditions',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 26,
-                                      fontFamily: 'Anaheim'),
-                                ),
+                            minY: 0,
+                            maxY: 25,
+                            lineBarsData: [
+                              LineChartBarData(
+                                spots: morningSpots,
+                                isCurved: true,
+                                barWidth: 3,
+                                color: const Color(0xFF0F75BC),
+                                dotData: FlDotData(show: true),
+                                belowBarData: BarAreaData(show: false),
                               ),
-                            ),
+                              LineChartBarData(
+                                spots: bedtimeSpots,
+                                isCurved: true,
+                                barWidth: 3,
+                                color: const Color(0xFF0F75BC),
+                                dotData: FlDotData(show: true),
+                                belowBarData: BarAreaData(show: false),
+                              ),
+                            ],
                           ),
-                          _DividerIcon(),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 12),
+              ],
             ),
           ],
         ),
@@ -274,13 +296,33 @@ class _profile_screen extends State<profile_screen> with RouteAware {
   }
 }
 
-// small helper for your row dividers
-class _DividerIcon extends StatelessWidget {
-  const _DividerIcon();
+class _ToggleBtn extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _ToggleBtn({required this.label, required this.selected, required this.onTap});
+
   @override
-  Widget build(BuildContext context) => Container(
-    width: 1,
-    height: 50,
-    color: const Color(0xffB993BC),
-  );
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        decoration: BoxDecoration(
+          color: selected ? const Color(0xFF485370) : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: const Color(0xFF485370), width: 1.5),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: selected ? Colors.white : const Color(0xFF485370),
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
 }
