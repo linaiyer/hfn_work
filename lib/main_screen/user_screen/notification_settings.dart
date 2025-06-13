@@ -52,6 +52,7 @@ class _notification_settings extends State<notification_settings> {
               onSurface: Colors.black,
             ),
             timePickerTheme: base.timePickerTheme.copyWith(
+              backgroundColor: const Color(0xFFF6F4F5),
               hourMinuteColor: MaterialStateColor.resolveWith(
                     (states) => states.contains(MaterialState.selected)
                     ? const Color(0xFF0F75BC)

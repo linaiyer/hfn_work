@@ -5,47 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02656767-4bce-4d7f-955b-0a6026c31a84" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/audio/bedtime.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/morning.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/default_prof.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/settings_selected.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/settings_unselected.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/bell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/book.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/forest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/terms.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/waterfall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/notification_settings.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/settings_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/home_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/home_selected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/home_unselected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/home_unselected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/setting_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/setting_unselected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth_screen/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth_screen/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth_screen/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth_screen/splash_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bottom_shet/bottom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bottom_shet/bottom_navigation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/admin_screen/add_patient_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/admin_screen/admin_home_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/admin_screen/configure_users_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/super_admin_screen/add_manage_admin.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/super_admin_screen/manage_admins_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/super_admin_screen/super_admin_home_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/terms_of_use.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/terms_of_use.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/additional_resources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/additional_resources.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/avater_select/pick_avater.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/avater_select/pick_avater.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/notification_settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/notification_settings.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/video/play_video_intro_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/video/play_video_morning_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/video/play_video_outro_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/video/play_video_bedtime_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/video/play_video_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/week/week_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/notification/push_notification_handler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/notification/push_notification_handler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

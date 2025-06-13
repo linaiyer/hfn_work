@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hfn_work/auth_screen/login.dart';
 import 'package:hfn_work/main.dart';
+import 'package:hfn_work/main_screen/user_screen/avater_select/pick_avater.dart';
 import 'package:hfn_work/main_screen/user_screen/settings_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -52,10 +53,7 @@ class _profile_screen extends State<profile_screen> with RouteAware {
     final pref = await SharedPreferences.getInstance();
     final uid = pref.getString('user_id');
     if (uid != null) {
-      final doc = await FirebaseFirestore.instance
-          .collection('user')
-          .doc(uid)
-          .get();
+      final doc = await FirebaseFirestore.instance.collection('user').doc(uid).get();
       if (doc.exists) setState(() => profileData = doc.data());
     }
   }
@@ -75,16 +73,16 @@ class _profile_screen extends State<profile_screen> with RouteAware {
         .where('date', isGreaterThanOrEqualTo: cutoffStr)
         .get();
 
-    // map date->data
-    final Map<String, Map<String, dynamic>> raw = {
-      for (var doc in snap.docs) doc['date'] as String: doc.data() as Map<String, dynamic>
-    };
+    final raw = <String, Map<String, dynamic>>{};
+    for (var doc in snap.docs) {
+      raw[doc['date'] as String] = doc.data() as Map<String, dynamic>;
+    }
 
-    final List<FlSpot> mSpots = [];
-    final List<FlSpot> bSpots = [];
-    for (int i = 0; i < daysCount; i++) {
-      final date = cutoffDate.add(Duration(days: i));
-      final key = DateFormat('yyyy-MM-dd').format(date);
+    final mSpots = <FlSpot>[];
+    final bSpots = <FlSpot>[];
+    for (var i = 0; i < daysCount; i++) {
+      final day = cutoffDate.add(Duration(days: i));
+      final key = DateFormat('yyyy-MM-dd').format(day);
       final entry = raw[key];
       final mSec = entry != null ? (entry['morningSec'] as num?)?.toInt() ?? 0 : 0;
       final bSec = entry != null ? (entry['bedtimeSec'] as num?)?.toInt() ?? 0 : 0;
@@ -116,6 +114,7 @@ class _profile_screen extends State<profile_screen> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final name = profileData?['name'] as String? ?? 'Your Name';
+    final avatarUrl = profileData?['user_profile'] as String?;
 
     return Scaffold(
       backgroundColor: const Color(0xFFF6F4F5),
@@ -141,35 +140,47 @@ class _profile_screen extends State<profile_screen> with RouteAware {
               children: [
                 const SizedBox(height: 50),
                 Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF485370), width: 2),
-                      boxShadow: [
-                        BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(2, 4)),
-                      ],
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => pickAvatar()),
                     ),
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/icons/default_prof.png',
-                          width: 70,
-                          height: 70,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          name,
-                          style: const TextStyle(
-                            fontFamily: 'WorkSans',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF485370),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0xFF485370), width: 2),
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          ClipOval(
+                            child: avatarUrl != null && avatarUrl.isNotEmpty
+                                ? Image.network(
+                              avatarUrl,
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            )
+                                : Image.asset(
+                              'assets/icons/default_prof.png',
+                              width: 70,
+                              height: 70,
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 10),
+                          Text(
+                            name,
+                            style: const TextStyle(
+                              fontFamily: 'WorkSans',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF485370),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -202,29 +213,26 @@ class _profile_screen extends State<profile_screen> with RouteAware {
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: [
-                        _ToggleBtn(
-                          label: 'This Week',
-                          selected: thisWeek,
-                          onTap: () => setState(() {
-                            thisWeek = true;
-                            _loadStats();
-                          }),
-                        ),
-                        const SizedBox(width: 12),
-                        _ToggleBtn(
-                          label: 'This Month',
-                          selected: !thisWeek,
-                          onTap: () => setState(() {
-                            thisWeek = false;
-                            _loadStats();
-                          }),
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    children: [
+                      _ToggleBtn(
+                        label: 'This Week',
+                        selected: thisWeek,
+                        onTap: () => setState(() {
+                          thisWeek = true;
+                          _loadStats();
+                        }),
+                      ),
+                      const SizedBox(width: 12),
+                      _ToggleBtn(
+                        label: 'This Month',
+                        selected: !thisWeek,
+                        onTap: () => setState(() {
+                          thisWeek = false;
+                          _loadStats();
+                        }),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -232,9 +240,9 @@ class _profile_screen extends State<profile_screen> with RouteAware {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Card(
-                      color: const Color(0xFF0F75BC).withOpacity(0.03),
+                      color: const Color(0xFFF6F4F5),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      elevation: 3,
+                      elevation: 0,
                       child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: LineChart(
@@ -247,14 +255,14 @@ class _profile_screen extends State<profile_screen> with RouteAware {
                                 sideTitles: SideTitles(
                                   showTitles: true,
                                   interval: 1,
-                                  getTitlesWidget: (value, meta) => Text(value.toInt().toString()),
+                                  getTitlesWidget: (v, meta) => Text(v.toInt().toString()),
                                 ),
                               ),
                               leftTitles: AxisTitles(
                                 sideTitles: SideTitles(
                                   showTitles: true,
                                   interval: 5,
-                                  getTitlesWidget: (value, meta) => Text(value.toInt().toString()),
+                                  getTitlesWidget: (v, meta) => Text(v.toInt().toString()),
                                 ),
                               ),
                               topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -269,15 +277,13 @@ class _profile_screen extends State<profile_screen> with RouteAware {
                                 barWidth: 3,
                                 color: const Color(0xFF0F75BC),
                                 dotData: FlDotData(show: true),
-                                belowBarData: BarAreaData(show: false),
                               ),
                               LineChartBarData(
                                 spots: bedtimeSpots,
                                 isCurved: true,
                                 barWidth: 3,
-                                color: const Color(0xFF0F75BC),
+                                color: const Color(0xFF333333),
                                 dotData: FlDotData(show: true),
-                                belowBarData: BarAreaData(show: false),
                               ),
                             ],
                           ),
