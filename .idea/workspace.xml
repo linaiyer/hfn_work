@@ -6,8 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="02656767-4bce-4d7f-955b-0a6026c31a84" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/avater_select/pick_avater.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/avater_select/pick_avater.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/notification_settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/notification_settings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/acivment_selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/acivment_unselected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/default_prof.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/default_prof.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/google_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/google_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/home_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/home_selected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/home_unselected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/home_unselected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/settings_selected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/settings_selected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/settings_unselected.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/settings_unselected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_eight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_five.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_four.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_one.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_saven.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_six.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_three.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/achivement_two.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bottom_shet/bottom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bottom_shet/bottom_navigation.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main_screen/user_screen/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_screen/user_screen/profile_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

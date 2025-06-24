@@ -94,8 +94,8 @@ class _bottom_navigation extends State<bottom_navigation> {
                 currentIndex == 0
                     ? 'assets/icons/home_selected.png'
                     : 'assets/icons/home_unselected.png',
-                width: 60,
-                height: 60,
+                width: 45,
+                height: 45,
               ),
               label: '',
             ),
