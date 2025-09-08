@@ -113,7 +113,23 @@ class _profile_screen extends State<profile_screen> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    final name = profileData?['name'] as String? ?? 'Your Name';
+    // Get name with better fallback logic
+    String name = 'Your Name';
+    if (profileData != null) {
+      // Try to get name from SSO login
+      if (profileData!['name'] != null && profileData!['name'].toString().isNotEmpty) {
+        name = profileData!['name'].toString();
+      }
+      // Fallback to username for regular login
+      else if (profileData!['userName'] != null && profileData!['userName'].toString().isNotEmpty) {
+        name = profileData!['userName'].toString();
+      }
+      // Fallback to email username part
+      else if (profileData!['email'] != null && profileData!['email'].toString().isNotEmpty) {
+        name = profileData!['email'].toString().split('@')[0];
+      }
+    }
+    
     final avatarUrl = profileData?['user_profile'] as String?;
 
     return Scaffold(

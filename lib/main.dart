@@ -260,7 +260,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
-        title: 'Research CSV',
+        title: 'HFN For Work',
         builder: (context, child) {
           // SystemChrome.setPreferredOrientations([
           //   DeviceOrientation.portraitUp,

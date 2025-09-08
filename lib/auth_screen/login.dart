@@ -110,6 +110,15 @@ class _login extends State<login> {
         return;
       }
 
+      // Create display name from Google user data
+      String displayName = '';
+      if (user.displayName != null && user.displayName!.isNotEmpty) {
+        displayName = user.displayName!;
+      } else if (email.isNotEmpty) {
+        // Fallback to email username part
+        displayName = email.split('@')[0];
+      }
+
       final pref = await SharedPreferences.getInstance();
       final usersRef = FirebaseFirestore.instance.collection('user');
       final query =
@@ -123,11 +132,15 @@ class _login extends State<login> {
           'user_type': userType,
           'start_date': '',
           'email': email,
-          'name': user.displayName ?? '',
+          'name': displayName,
         });
       } else {
         final data = query.docs.first.data() as Map<String, dynamic>;
         userType = data['user_type'] ?? '0';
+        // Update name if it's empty and we have a display name
+        if ((data['name'] == null || data['name'].toString().isEmpty) && displayName.isNotEmpty) {
+          await query.docs.first.reference.update({'name': displayName});
+        }
       }
 
       await pref.setString('user_id', user.uid);
@@ -158,13 +171,57 @@ class _login extends State<login> {
       );
       final userCred = await FirebaseAuth.instance
           .signInWithCredential(oauthCredential);
-      if (userCred.user != null) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (_) => bottom_navigation()),
-              (route) => false,
-        );
+      final user = userCred.user;
+      if (user == null) {
+        Fluttertoast.showToast(msg: 'Apple sign-in failed: no user');
+        return;
       }
+
+      // Create display name from Apple credential
+      String displayName = '';
+      if (appleCredential.givenName != null && appleCredential.familyName != null) {
+        displayName = '${appleCredential.givenName} ${appleCredential.familyName}';
+      } else if (appleCredential.givenName != null) {
+        displayName = appleCredential.givenName!;
+      } else if (user.displayName != null && user.displayName!.isNotEmpty) {
+        displayName = user.displayName!;
+      } else if (user.email != null) {
+        // Fallback to email username part
+        displayName = user.email!.split('@')[0];
+      }
+
+      final pref = await SharedPreferences.getInstance();
+      final usersRef = FirebaseFirestore.instance.collection('user');
+      final query =
+      await usersRef.where('email', isEqualTo: user.email).limit(1).get();
+
+      String userType;
+      if (query.docs.isEmpty) {
+        userType = '0';
+        await usersRef.doc(user.uid).set({
+          'id': user.uid,
+          'user_type': userType,
+          'start_date': '',
+          'email': user.email,
+          'name': displayName,
+        });
+      } else {
+        final data = query.docs.first.data() as Map<String, dynamic>;
+        userType = data['user_type'] ?? '0';
+        // Update name if it's empty and we have a display name
+        if ((data['name'] == null || data['name'].toString().isEmpty) && displayName.isNotEmpty) {
+          await query.docs.first.reference.update({'name': displayName});
+        }
+      }
+
+      await pref.setString('user_id', user.uid);
+      await pref.setString('user_type', userType);
+
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => bottom_navigation()),
+            (route) => false,
+      );
     } catch (e) {
       Fluttertoast.showToast(msg: 'Apple sign-in failed: $e');
     } finally {

@@ -51,14 +51,29 @@ class _create_account extends State<create_account> {
       final userRef = FirebaseFirestore.instance.collection('user').doc(user.uid);
       final snapshot = await userRef.get();
 
+      // Create display name from Google user data
+      String displayName = '';
+      if (user.displayName != null && user.displayName!.isNotEmpty) {
+        displayName = user.displayName!;
+      } else if (user.email != null && user.email!.isNotEmpty) {
+        // Fallback to email username part
+        displayName = user.email!.split('@')[0];
+      }
+
       if (!snapshot.exists) {
         await userRef.set({
           'id': user.uid,
           'user_type': '0',
           'start_date': '',
           'email': user.email,
-          'name': user.displayName ?? '',
+          'name': displayName,
         });
+      } else {
+        // Update name if it's empty and we have a display name
+        final data = snapshot.data() as Map<String, dynamic>;
+        if ((data['name'] == null || data['name'].toString().isEmpty) && displayName.isNotEmpty) {
+          await userRef.update({'name': displayName});
+        }
       }
       await pref.setString('user_id', user.uid);
       await pref.setString('user_type', '0');

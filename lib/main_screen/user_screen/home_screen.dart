@@ -192,7 +192,7 @@ class _home_screen extends State<home_screen> with RouteAware {
                                   ),
                                   SizedBox(width: 4),
                                   Text(
-                                    '10:02',
+                                    '13:28',
                                     style: TextStyle(color: Color(0xFF666666)),
                                   ),
                                 ],
@@ -278,7 +278,7 @@ class _home_screen extends State<home_screen> with RouteAware {
                                   ),
                                   SizedBox(width: 4),
                                   Text(
-                                    '10:02',
+                                    '10:45',
                                     style: TextStyle(color: Color(0xFF666666)),
                                   ),
                                 ],

@@ -105,34 +105,34 @@ class _pickAvatar extends State<pickAvatar> {
                   Expanded(
                     child: Column(
                       children: [
-                        // Top single avatar
+                        // Top single avatar (last one)
                         if (avatarImages.length >= 1)
-                          _buildAvatarButton(avatarImages[0]['image'] as String),
+                          _buildAvatarButton(avatarImages[avatarImages.length - 1]['image'] as String),
                         const SizedBox(height: 24),
-                        // Next two avatars
+                        // Next two avatars (second-to-last and third-to-last)
                         if (avatarImages.length >= 3)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              _buildAvatarButton(avatarImages[1]['image'] as String),
-                              _buildAvatarButton(avatarImages[2]['image'] as String),
+                              _buildAvatarButton(avatarImages[avatarImages.length - 2]['image'] as String),
+                              _buildAvatarButton(avatarImages[avatarImages.length - 3]['image'] as String),
                             ],
                           ),
                         if (avatarImages.length == 2)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              _buildAvatarButton(avatarImages[1]['image'] as String),
+                              _buildAvatarButton(avatarImages[avatarImages.length - 2]['image'] as String),
                             ],
                           ),
                         const SizedBox(height: 24),
-                        // Next two avatars
+                        // Next two avatars (fourth-to-last and fifth-to-last)
                         if (avatarImages.length >= 5)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              _buildAvatarButton(avatarImages[3]['image'] as String),
-                              _buildAvatarButton(avatarImages[4]['image'] as String),
+                              _buildAvatarButton(avatarImages[avatarImages.length - 4]['image'] as String),
+                              _buildAvatarButton(avatarImages[avatarImages.length - 5]['image'] as String),
                             ],
                           ),
                       ],
