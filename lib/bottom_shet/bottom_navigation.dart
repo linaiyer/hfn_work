@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hfn_work/bottom_shet/bottom_tabs.dart';
 import 'package:hfn_work/utils/styles.dart';
+import 'package:hfn_work/auth_screen/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class bottom_navigation extends StatefulWidget {
@@ -12,12 +13,79 @@ class bottom_navigation extends StatefulWidget {
 class _bottom_navigation extends State<bottom_navigation> {
   int currentIndex = 0;
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
+    // Check if user is a guest trying to access profile/settings (index 1)
+    if (index == 1 && !check) {
+      _showGuestLoginDialog();
+      return;
+    }
+    
     setState(() {
       currentIndex = index;
       print('_selectedIndex');
       print(currentIndex);
     });
+  }
+
+  void _showGuestLoginDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFFF6F4F5),
+          title: const Text(
+            'Login Required',
+            style: TextStyle(
+              fontFamily: 'WorkSans',
+              color: Color(0xFF485370),
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          content: const Text(
+            'To access your profile and settings, please login or create an account.',
+            style: TextStyle(
+              fontFamily: 'WorkSans',
+              color: Color(0xFF485370),
+              fontSize: 16,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  color: Color(0xFF0F75BC),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => welcome()),
+                  (route) => false,
+                );
+              },
+              child: const Text(
+                'Go to Login',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  color: Color(0xFF0F75BC),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -60,15 +128,7 @@ class _bottom_navigation extends State<bottom_navigation> {
         child: BottomNavigationBar(
           backgroundColor: greyColor,  // ensure the bar itself is the same color
           currentIndex: currentIndex,
-          onTap: check
-              ? _onItemTapped
-              : (i) => Fluttertoast.showToast(
-            msg: 'Do login first',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            backgroundColor: greyColor,
-            textColor: Colors.white,
-          ),
+          onTap: _onItemTapped,
 
           type: BottomNavigationBarType.fixed,
           iconSize: 60,                // <–– bump the icon size

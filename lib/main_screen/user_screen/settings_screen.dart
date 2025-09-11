@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hfn_work/auth_screen/login.dart';
 import 'package:hfn_work/main_screen/user_screen/additional_resources.dart';
 import 'package:hfn_work/main_screen/terms_of_use.dart';
@@ -40,6 +42,167 @@ class _settings_screen extends State<settings_screen> {
       MaterialPageRoute(builder: (_) => login()),
           (route) => false,
     );
+  }
+
+  Future<void> _deleteAccount() async {
+    // Show confirmation dialog
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFFF6F4F5),
+          title: const Text(
+            'Delete Account',
+            style: TextStyle(
+              fontFamily: 'WorkSans',
+              color: Color(0xFF485370),
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          content: const Text(
+            'Are you sure you want to delete your account? This action cannot be undone and will permanently remove all your data.',
+            style: TextStyle(
+              fontFamily: 'WorkSans',
+              color: Color(0xFF485370),
+              fontSize: 16,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  color: Color(0xFF0F75BC),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text(
+                'Delete',
+                style: TextStyle(
+                  fontFamily: 'WorkSans',
+                  color: Colors.red,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed == true) {
+      try {
+        // Show loading indicator
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return const Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF0F75BC)),
+              ),
+            );
+          },
+        );
+
+        final prefs = await SharedPreferences.getInstance();
+        final uid = prefs.getString('user_id');
+        
+        if (uid != null) {
+          // Delete user data from all Firebase collections
+          final firestore = FirebaseFirestore.instance;
+          
+          // Delete from user collection
+          await firestore.collection('user').doc(uid).delete();
+          
+          // Delete from listeningStats collection
+          final listeningStatsQuery = await firestore
+              .collection('listeningStats')
+              .where('user_id', isEqualTo: uid)
+              .get();
+          for (var doc in listeningStatsQuery.docs) {
+            await doc.reference.delete();
+          }
+          
+          // Delete from watchDataTable collection
+          final watchDataQuery = await firestore
+              .collection('watchDataTable')
+              .where('user_id', isEqualTo: uid)
+              .get();
+          for (var doc in watchDataQuery.docs) {
+            await doc.reference.delete();
+          }
+          
+          // Delete from profileImage collection
+          final profileImageQuery = await firestore
+              .collection('profileImage')
+              .where('user_id', isEqualTo: uid)
+              .get();
+          for (var doc in profileImageQuery.docs) {
+            await doc.reference.delete();
+          }
+        }
+
+        // Sign out from Google if signed in with Google
+        try {
+          await GoogleSignIn().signOut();
+        } catch (e) {
+          // Ignore if not signed in with Google
+        }
+
+        // Delete Firebase Auth user
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          await user.delete();
+        }
+
+        // Clear local preferences
+        await prefs.clear();
+
+        // Close loading dialog
+        Navigator.of(context).pop();
+
+        // Navigate to login screen
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => login()),
+          (route) => false,
+        );
+
+        // Show success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Account deleted successfully',
+              style: TextStyle(fontFamily: 'WorkSans'),
+            ),
+            backgroundColor: Color(0xFF0F75BC),
+          ),
+        );
+      } catch (e) {
+        // Close loading dialog
+        Navigator.of(context).pop();
+        
+        // Show error message
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Error deleting account: $e',
+              style: const TextStyle(fontFamily: 'WorkSans'),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -146,6 +309,33 @@ class _settings_screen extends State<settings_screen> {
                   ),
                   child: const Text(
                     'Log out',
+                    style: TextStyle(fontFamily: 'WorkSans', fontWeight: FontWeight.w700, fontSize: 25,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _deleteAccount,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                    elevation: 3,
+                    shadowColor: const Color.fromRGBO(0, 0, 0, 0.9),
+                    side: const BorderSide(color: Colors.red),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 14,
+                      horizontal: 16,
+                    ),
+                    alignment: Alignment.center,
+                  ),
+                  child: const Text(
+                    'Delete Account',
                     style: TextStyle(fontFamily: 'WorkSans', fontWeight: FontWeight.w700, fontSize: 25,
                         color: Colors.white),
                   ),

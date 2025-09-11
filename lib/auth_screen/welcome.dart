@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hfn_work/auth_screen/login.dart';
 import 'package:hfn_work/auth_screen/create_account.dart';
+import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
 
 class welcome extends StatefulWidget {
   @override
@@ -123,6 +124,29 @@ class _welcome extends State<welcome> {
                       elevation: 1,
                     ),
                     child: Text('Log in'),
+                  ),
+                  SizedBox(height: 16),
+
+                  // Continue as Guest button
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => bottom_navigation()),
+                        (route) => false,
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: Color(0xFF485370).withOpacity(0.7),
+                      textStyle: TextStyle(
+                        fontFamily: 'WorkSans',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        decoration: TextDecoration.underline,
+                      ),
+                      minimumSize: Size(double.infinity, 48),
+                    ),
+                    child: Text('Continue as Guest'),
                   ),
                 ],
               ),
