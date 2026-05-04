@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:70034961552:android:77bd38db2b733ef1385415",
+        "mobilesdk_app_id": "1:70034961552:android:68693a53a111b730385415",
         "android_client_info": {
-          "package_name": "com.example.hfnWork"
+          "package_name": "com.hfnwork.app"
         }
       },
       "oauth_client": [

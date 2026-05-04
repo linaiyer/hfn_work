@@ -7,6 +7,10 @@ import 'package:hfn_work/auth_screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
+import 'dart:io' show Platform;
+import 'dart:math';
 // ──────────────────────────────────────────────────────────────────────────────
 
 import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
@@ -21,6 +25,22 @@ class create_account extends StatefulWidget {
 }
 
 class _create_account extends State<create_account> {
+
+  /// Generates a cryptographically secure random nonce, to be included in a
+  /// credential request.
+  String generateNonce([int length = 32]) {
+    const charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(length, (_) => charset[random.nextInt(charset.length)]).join();
+  }
+
+  /// Returns the sha256 hash of [input] in hex notation.
+  String sha256ofString(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
+  }
+
   // ─── NEW: Google Sign-In Handler ─────────────────────────────────────────────
   Future<void> _handleGoogleSignIn() async {
     // optional: trigger loader
@@ -100,30 +120,135 @@ class _create_account extends State<create_account> {
   Future<void> _handleAppleSignIn() async {
     setState(() {}); // If you want a loader, set a boolean here
     try {
+      print('Starting Apple Sign In (create account)...');
+      
+      // Generate nonce for security
+      final rawNonce = generateNonce();
+      final nonce = sha256ofString(rawNonce);
+      
+      print('Getting Apple ID credential...');
       final appleCredential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
         ],
+        nonce: nonce,
       );
+      
+      print('Apple credential received: ${appleCredential.userIdentifier}');
+      print('Email: ${appleCredential.email}');
+      print('Given name: ${appleCredential.givenName}');
+      print('Family name: ${appleCredential.familyName}');
 
       final oauthCredential = OAuthProvider("apple.com").credential(
         idToken: appleCredential.identityToken,
-        rawNonce: appleCredential.authorizationCode, // optional
+        rawNonce: rawNonce,
+        accessToken: appleCredential.authorizationCode,
       );
 
-      UserCredential userCred =
-      await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+      print('Signing in with Firebase...');
+      UserCredential userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+      
+      final User? user = userCred.user;
+      if (user == null) {
+        print('Firebase user is null');
+        return;
+      }
+      
+      print('Firebase user created/signed in: ${user.uid}');
+      print('User email: ${user.email}');
+      print('User displayName: ${user.displayName}');
 
-      if (userCred.user != null) {
+      // Create display name from Apple credential (only available on first sign-in)
+      String displayName = '';
+      if (appleCredential.givenName != null && appleCredential.familyName != null) {
+        displayName = '${appleCredential.givenName} ${appleCredential.familyName}';
+        print('Using Apple credential name: $displayName');
+      } else if (appleCredential.givenName != null) {
+        displayName = appleCredential.givenName!;
+        print('Using Apple given name: $displayName');
+      } else if (user.displayName != null && user.displayName!.isNotEmpty) {
+        displayName = user.displayName!;
+        print('Using Firebase displayName: $displayName');
+      } else if (user.email != null) {
+        // Fallback to email username part
+        displayName = user.email!.split('@')[0];
+        print('Using email fallback: $displayName');
+      } else {
+        displayName = 'Apple User';
+        print('Using default fallback name');
+      }
+
+      // Ensure Firestore has a user doc & save prefs
+      final SharedPreferences pref = await SharedPreferences.getInstance();
+      final usersRef = FirebaseFirestore.instance.collection('user');
+      
+      // Use the Firebase UID as the document ID for consistency
+      final userDocRef = usersRef.doc(user.uid);
+      final userDoc = await userDocRef.get();
+
+      String userType = '0';
+      
+      if (!userDoc.exists) {
+        print('Creating new user document...');
+        await userDocRef.set({
+          'id': user.uid,
+          'user_type': userType,
+          'start_date': '',
+          'email': user.email ?? '',
+          'name': displayName,
+          'provider': 'apple',
+          'created_at': FieldValue.serverTimestamp(),
+        });
+        print('User document created successfully');
+      } else {
+        print('User document already exists, updating if needed...');
+        final data = userDoc.data() as Map<String, dynamic>;
+        userType = data['user_type'] ?? '0';
+        
+        // Update name if it's empty and we have a display name
+        Map<String, dynamic> updates = {};
+        if ((data['name'] == null || data['name'].toString().isEmpty) && displayName.isNotEmpty) {
+          updates['name'] = displayName;
+        }
+        if (data['email'] == null || data['email'].toString().isEmpty) {
+          updates['email'] = user.email ?? '';
+        }
+        
+        if (updates.isNotEmpty) {
+          await userDocRef.update(updates);
+          print('User document updated with: $updates');
+        }
+      }
+      
+      await pref.setString('user_id', user.uid);
+      await pref.setString('user_type', userType);
+      print('SharedPreferences saved');
+
+      print('Navigating to app...');
+      if (mounted) {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => bottom_navigation()),
-              (route) => false,
+          (route) => false,
         );
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       print('Apple sign-in error: $e');
+      print('Stack trace: $stackTrace');
+      
+      // Show user-friendly error message
+      String errorMsg = 'Apple sign-in failed';
+      if (e.toString().contains('cancelled')) {
+        errorMsg = 'Sign-in was cancelled';
+      } else if (e.toString().contains('network')) {
+        errorMsg = 'Network error. Please check your connection.';
+      }
+      
+      // You can show a Snackbar or other UI feedback here
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMsg)),
+      );
     } finally {
       setState(() {}); // reset loader boolean if you use one
     }
@@ -225,51 +350,52 @@ class _create_account extends State<create_account> {
               ),
               const SizedBox(height: 12),
 
-              // Apple button
-              // ElevatedButton(
-              //   onPressed: _handleAppleSignIn, // ─── UPDATED
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Colors.white,
-              //     foregroundColor: const Color(0xFF485370),
-              //     elevation: 2,
-              //     shadowColor: const Color.fromRGBO(0, 0, 0, 0.1),
-              //     side: const BorderSide(color: Color(0xFFCCCCCC)),
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(24),
-              //     ),
-              //     padding: const EdgeInsets.symmetric(
-              //       vertical: 14,
-              //       horizontal: 16,
-              //     ),
-              //     alignment: Alignment.centerLeft,
-              //   ),
-                // child: Row(
-                //   mainAxisSize: MainAxisSize.min,
-                //   children: [
-                //     Icon(
-                //       Icons.apple,
-                //       size: 24,
-                //       color: const Color(0xFF485370),
-                //     ),
-                //     const SizedBox(width: 12),
-                //     Container(
-                //       width: 1,
-                //       height: 24,
-                //       color: const Color(0xFFCCCCCC),
-                //     ),
-                //     const SizedBox(width: 12),
-                //     Text(
-                //       'Continue with Apple',
-                //       style: theme.textTheme.bodyLarge?.copyWith(
-                //         fontFamily: 'WorkSans',
-                //         fontWeight: FontWeight.w600,
-                //         fontSize: 16,
-                //       ),
-                //     ),
-                //   ],
-                // ),
-              // ),
-              // const SizedBox(height: 12),
+              if (Platform.isIOS) ...[
+                ElevatedButton(
+                  onPressed: _handleAppleSignIn,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF485370),
+                    elevation: 2,
+                    shadowColor: const Color.fromRGBO(0, 0, 0, 0.1),
+                    side: const BorderSide(color: Color(0xFFCCCCCC)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 14,
+                      horizontal: 16,
+                    ),
+                    alignment: Alignment.centerLeft,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        'assets/icons/apple_logo.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                      const SizedBox(width: 12),
+                      Container(
+                        width: 1,
+                        height: 24,
+                        color: const Color(0xFFCCCCCC),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        'Continue with Apple',
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          fontFamily: 'WorkSans',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
 
               // SSO button (unchanged)
               ElevatedButton(

@@ -56502,6 +56502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00B517C49C49096F116BD73A1D75CA5 /* gRPC-Core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -56542,6 +56543,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFF0AEFA80518809FB7FB91AE4635AEF /* connectivity.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -56597,6 +56599,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F1D0BB22A6ACD888AFBA847B555FAC2 /* FirebaseFirestoreInternal.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -56636,6 +56639,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F65D577EE752E91D7EABDCC6765A1A4 /* FirebaseAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -56675,10 +56679,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3C254AEAD728797F5040B1E51C0CD7F /* FirebaseMessaging.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMessaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseMessaging;
 				INFOPLIST_FILE = "Target Support Files/FirebaseMessaging/ResourceBundle-FirebaseMessaging_Privacy-FirebaseMessaging-Info.plist";
@@ -56696,6 +56702,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA070C9BFD55FD6E33FC894095D8B0E7 /* path_provider_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -56749,6 +56756,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83B0F1D6781B5C6491B3A450BBFDF5D8 /* firebase_auth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -56807,6 +56815,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B9874574609ABBD825D18C3370A34F0 /* GoogleUtilities.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -56846,6 +56855,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 140CB958B9422CDAFF87CC55916F0A39 /* google_sign_in_ios.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -56904,11 +56914,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89D25D2FBE373D91A297F6367F949B6E /* file_picker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/file_picker";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = file_picker;
 				INFOPLIST_FILE = "Target Support Files/file_picker/ResourceBundle-file_picker_ios_privacy-file_picker-Info.plist";
@@ -56927,6 +56939,7 @@
 			baseConfigurationReference = 80BF9B6370D3FDB139ABC19C7736EC86 /* Pods-Runner.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -56983,6 +56996,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84506F6A9A2A7EB73FE340DA05526F18 /* flutter_local_notifications_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57039,11 +57053,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E55B35A23F3B96E28C811BEEF02D3776 /* GoogleDataTransport.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleDataTransport";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleDataTransport;
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/ResourceBundle-GoogleDataTransport_Privacy-GoogleDataTransport-Info.plist";
@@ -57061,6 +57077,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 163572145534A0430279A491C74F283E /* video_thumbnail.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57117,10 +57134,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F83D756EEB084181DE4C3CC28444AE88 /* gRPC-C++.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
@@ -57138,6 +57157,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B8AF7FB01B7546AF9963C6AED4460 /* SDWebImage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -57177,6 +57197,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB57E13C18EF09745D633630BB95045A /* RecaptchaInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57217,10 +57238,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F1D0BB22A6ACD888AFBA847B555FAC2 /* FirebaseFirestoreInternal.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestoreInternal/ResourceBundle-FirebaseFirestoreInternal_Privacy-FirebaseFirestoreInternal-Info.plist";
@@ -57238,10 +57261,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6E5689BE730BA0DF41BDCEEF5E046E /* permission_handler_apple.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/permission_handler_apple";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = permission_handler_apple;
 				INFOPLIST_FILE = "Target Support Files/permission_handler_apple/ResourceBundle-permission_handler_apple_privacy-permission_handler_apple-Info.plist";
@@ -57259,10 +57284,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 991F7614F4A663C05267270A169F0B9B /* shared_preferences_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/shared_preferences_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = shared_preferences_foundation;
 				INFOPLIST_FILE = "Target Support Files/shared_preferences_foundation/ResourceBundle-shared_preferences_foundation_privacy-shared_preferences_foundation-Info.plist";
@@ -57279,6 +57306,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4AC4C990AF8DF8506A462821E23CC22 /* PromisesObjC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -57316,6 +57344,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36A78D24615DF664033A923D22AAD48B /* flutter_native_timezone.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57372,6 +57401,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EAD00ADDC737B6FEBB011E4E50633CF /* nanopb.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57412,6 +57442,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6E5689BE730BA0DF41BDCEEF5E046E /* permission_handler_apple.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57469,10 +57500,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6380D1F9E3319A38488470983AC0D447 /* firebase_messaging.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/firebase_messaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = firebase_messaging;
 				INFOPLIST_FILE = "Target Support Files/firebase_messaging/ResourceBundle-firebase_messaging_Privacy-firebase_messaging-Info.plist";
@@ -57490,6 +57523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6BFE84A14E5C6326B2628EE373C3D23 /* just_audio.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -57547,6 +57581,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA070C9BFD55FD6E33FC894095D8B0E7 /* path_provider_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -57600,6 +57635,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F38789F159E3680DEB48F65FA034C57 /* FirebaseAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57641,7 +57677,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -57658,6 +57696,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57698,6 +57737,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EAD00ADDC737B6FEBB011E4E50633CF /* nanopb.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57738,10 +57778,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80AEA162A4596A25F1A5A517E6CB29AE /* FirebaseCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCore/ResourceBundle-FirebaseCore_Privacy-FirebaseCore-Info.plist";
@@ -57758,10 +57800,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00FE7C1A21AFB93B64507E949434E98F /* firebase_messaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/firebase_messaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = firebase_messaging;
 				INFOPLIST_FILE = "Target Support Files/firebase_messaging/ResourceBundle-firebase_messaging_Privacy-firebase_messaging-Info.plist";
@@ -57778,11 +57822,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA070C9BFD55FD6E33FC894095D8B0E7 /* path_provider_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/path_provider_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = path_provider_foundation;
 				INFOPLIST_FILE = "Target Support Files/path_provider_foundation/ResourceBundle-path_provider_foundation_privacy-path_provider_foundation-Info.plist";
@@ -57800,6 +57846,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 050DBD0F132A126D61BFCB361B1DAB42 /* DKPhotoGallery.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -57839,11 +57886,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F38789F159E3680DEB48F65FA034C57 /* FirebaseAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseAuth;
 				INFOPLIST_FILE = "Target Support Files/FirebaseAuth/ResourceBundle-FirebaseAuth_Privacy-FirebaseAuth-Info.plist";
@@ -57861,6 +57910,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDD83E7BAF71ED9D603B83A1B7304E91 /* AppCheckCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57900,6 +57950,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D61ADD3BCEDC4F1B2B261789C9B40BE /* GTMAppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -57939,6 +57990,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A69DACB1A2B925EB0E81DAD672C3E2B9 /* wakelock_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -57996,6 +58048,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8AA07C19EBA7D1A792873173752E534B /* cloud_firestore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58054,6 +58107,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FB9656111ED96F7471F55C81695360E /* cloud_firestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58112,6 +58166,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00FE7C1A21AFB93B64507E949434E98F /* firebase_messaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58170,6 +58225,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BBD498CE2DD02314069D03C45486AEA /* leveldb-library.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58210,6 +58266,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DEBF485699338FAAE65350EF1416B5D /* package_info_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58267,6 +58324,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F83D756EEB084181DE4C3CC28444AE88 /* gRPC-C++.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58307,6 +58365,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4806ED8EAA51B3DC3C41A2A302F9C88 /* FirebaseAppCheckInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58347,6 +58406,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBDE26B8F250F079A9927C69A0A0371E /* DKPhotoGallery.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -58386,6 +58446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87C600F5858E5B3A99011A67EA3325FF /* FirebaseInstallations.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58425,10 +58486,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C20FD6BEADD9CF57F98233FE2D7102D /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
@@ -58445,10 +58508,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1E16580F749F74D466C830C3F27C3FC1 /* PromisesObjC.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PromisesObjC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FBLPromises;
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/ResourceBundle-FBLPromises_Privacy-PromisesObjC-Info.plist";
@@ -58466,6 +58531,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C62224E718B3FD3F12789A08CE903F3E /* FirebaseMessaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58505,6 +58571,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F0C2433C6E59C808182761C51253424 /* firebase_core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58563,11 +58630,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
@@ -58585,10 +58654,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1889662BC6B2824501BE4F216D6E7FB2 /* FirebaseCore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCore/ResourceBundle-FirebaseCore_Privacy-FirebaseCore-Info.plist";
@@ -58606,11 +58677,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EAD00ADDC737B6FEBB011E4E50633CF /* nanopb.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/nanopb";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = nanopb;
 				INFOPLIST_FILE = "Target Support Files/nanopb/ResourceBundle-nanopb_Privacy-nanopb-Info.plist";
@@ -58628,11 +58701,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4AC4C990AF8DF8506A462821E23CC22 /* PromisesObjC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PromisesObjC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FBLPromises;
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/ResourceBundle-FBLPromises_Privacy-PromisesObjC-Info.plist";
@@ -58650,6 +58725,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C20FD6BEADD9CF57F98233FE2D7102D /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58688,11 +58764,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00B517C49C49096F116BD73A1D75CA5 /* gRPC-Core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-Core";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpc;
 				INFOPLIST_FILE = "Target Support Files/gRPC-Core/ResourceBundle-grpc-gRPC-Core-Info.plist";
@@ -58710,10 +58788,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70C2A47C65DF7A361C4D3A8F273FA11B /* SwiftyGif.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftyGif";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SwiftyGif;
 				INFOPLIST_FILE = "Target Support Files/SwiftyGif/ResourceBundle-SwiftyGif-SwiftyGif-Info.plist";
@@ -58731,10 +58811,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DAAA091C0EB80289054A8760BAD3204 /* BoringSSL-GRPC.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BoringSSL-GRPC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = openssl_grpc;
 				INFOPLIST_FILE = "Target Support Files/BoringSSL-GRPC/ResourceBundle-openssl_grpc-BoringSSL-GRPC-Info.plist";
@@ -58752,6 +58834,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2501278C848C94F1B8F8201D22BCF64 /* FirebaseCoreExtension.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58792,11 +58875,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C62224E718B3FD3F12789A08CE903F3E /* FirebaseMessaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMessaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseMessaging;
 				INFOPLIST_FILE = "Target Support Files/FirebaseMessaging/ResourceBundle-FirebaseMessaging_Privacy-FirebaseMessaging-Info.plist";
@@ -58814,6 +58899,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39C6F4A6FAF4DB73BBA0EF305AE0AC78 /* connectivity.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -58869,6 +58955,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F76DC73AC054180F297BFD790B97132 /* firebase_storage.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58927,6 +59014,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC40D1EA7F3F40CC6D32D0F2B4CC2BC9 /* google_sign_in_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -58985,10 +59073,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C62224E718B3FD3F12789A08CE903F3E /* FirebaseMessaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMessaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseMessaging;
 				INFOPLIST_FILE = "Target Support Files/FirebaseMessaging/ResourceBundle-FirebaseMessaging_Privacy-FirebaseMessaging-Info.plist";
@@ -59005,6 +59095,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 991F7614F4A663C05267270A169F0B9B /* shared_preferences_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59057,6 +59148,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C6F41952AF68FA9BC2067E22457704E /* DKImagePickerController.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -59096,11 +59188,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 050DBD0F132A126D61BFCB361B1DAB42 /* DKPhotoGallery.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKPhotoGallery";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKPhotoGallery;
 				INFOPLIST_FILE = "Target Support Files/DKPhotoGallery/ResourceBundle-DKPhotoGallery-DKPhotoGallery-Info.plist";
@@ -59118,6 +59212,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59156,10 +59251,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB785405265AE0551AA5E8911547EF2A /* webview_flutter_wkwebview.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/webview_flutter_wkwebview";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = webview_flutter_wkwebview;
 				INFOPLIST_FILE = "Target Support Files/webview_flutter_wkwebview/ResourceBundle-webview_flutter_wkwebview_privacy-webview_flutter_wkwebview-Info.plist";
@@ -59176,10 +59273,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E55B35A23F3B96E28C811BEEF02D3776 /* GoogleDataTransport.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleDataTransport";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleDataTransport;
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/ResourceBundle-GoogleDataTransport_Privacy-GoogleDataTransport-Info.plist";
@@ -59196,6 +59295,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87C600F5858E5B3A99011A67EA3325FF /* FirebaseInstallations.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59235,6 +59335,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8B2BE0A2C4A18D398D575D311D57025 /* url_launcher_ios.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59287,6 +59388,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08E084195BF0D3EE30DCD294DE2D5D81 /* package_info_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59344,10 +59446,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93C111F9980A94F5A5D6BC7B0A866827 /* permission_handler_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/permission_handler_apple";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = permission_handler_apple;
 				INFOPLIST_FILE = "Target Support Files/permission_handler_apple/ResourceBundle-permission_handler_apple_privacy-permission_handler_apple-Info.plist";
@@ -59364,10 +59468,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15E8B6A263DA788DCF70FDD370BBCFD0 /* SDWebImage.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SDWebImage";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SDWebImage;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/ResourceBundle-SDWebImage-SDWebImage-Info.plist";
@@ -59385,6 +59491,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0BE501042A3F5EAF2E6D38C816E8A0D /* FirebaseCoreInternal.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59425,10 +59532,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F65D577EE752E91D7EABDCC6765A1A4 /* FirebaseAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseAuth;
 				INFOPLIST_FILE = "Target Support Files/FirebaseAuth/ResourceBundle-FirebaseAuth_Privacy-FirebaseAuth-Info.plist";
@@ -59446,6 +59555,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84506F6A9A2A7EB73FE340DA05526F18 /* flutter_local_notifications_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59502,11 +59612,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C4A75B51DBA556F5A5132F72A071EEA /* SwiftyGif.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftyGif";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SwiftyGif;
 				INFOPLIST_FILE = "Target Support Files/SwiftyGif/ResourceBundle-SwiftyGif-SwiftyGif-Info.plist";
@@ -59524,6 +59636,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59564,11 +59677,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Core_Privacy-GTMSessionFetcher-Info.plist";
@@ -59586,10 +59701,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0BE501042A3F5EAF2E6D38C816E8A0D /* FirebaseCoreInternal.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreInternal/ResourceBundle-FirebaseCoreInternal_Privacy-FirebaseCoreInternal-Info.plist";
@@ -59607,6 +59724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC40D1EA7F3F40CC6D32D0F2B4CC2BC9 /* google_sign_in_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59665,10 +59783,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 399C8B4971DE7B02FE40B6A9732CA586 /* shared_preferences_foundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/shared_preferences_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = shared_preferences_foundation;
 				INFOPLIST_FILE = "Target Support Files/shared_preferences_foundation/ResourceBundle-shared_preferences_foundation_privacy-shared_preferences_foundation-Info.plist";
@@ -59686,6 +59806,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B37E0F08D9B39A6569C3E71F879EB76D /* webview_flutter_wkwebview.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59738,6 +59859,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F3C9CFD2BF7A45015844C1A71DAC425D /* sign_in_with_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59793,6 +59915,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAE1208BA3CD0F0D60448CB6FB8EFA64 /* leveldb-library.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59833,6 +59956,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FD3D9AB60AEDBBC5485C0964D18FBB8 /* GoogleDataTransport.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -59872,6 +59996,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 399C8B4971DE7B02FE40B6A9732CA586 /* shared_preferences_foundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -59924,10 +60049,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC40D1EA7F3F40CC6D32D0F2B4CC2BC9 /* google_sign_in_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/google_sign_in_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = google_sign_in_ios;
 				INFOPLIST_FILE = "Target Support Files/google_sign_in_ios/ResourceBundle-google_sign_in_ios_privacy-google_sign_in_ios-Info.plist";
@@ -59944,11 +60071,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84506F6A9A2A7EB73FE340DA05526F18 /* flutter_local_notifications_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/flutter_local_notifications_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = flutter_local_notifications_plus;
 				INFOPLIST_FILE = "Target Support Files/flutter_local_notifications_plus/ResourceBundle-flutter_local_notifications_privacy-flutter_local_notifications_plus-Info.plist";
@@ -59966,11 +60095,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80AEA162A4596A25F1A5A517E6CB29AE /* FirebaseCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCore/ResourceBundle-FirebaseCore_Privacy-FirebaseCore-Info.plist";
@@ -59988,6 +60119,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76199645FC2623E38F241134136FD409 /* FirebaseStorage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60027,10 +60159,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C6F41952AF68FA9BC2067E22457704E /* DKImagePickerController.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKImagePickerController";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKImagePickerController;
 				INFOPLIST_FILE = "Target Support Files/DKImagePickerController/ResourceBundle-DKImagePickerController-DKImagePickerController-Info.plist";
@@ -60047,11 +60181,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A9FD80BFF81363D448B5AB51B06B9F /* fluttertoast.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/fluttertoast";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = fluttertoast;
 				INFOPLIST_FILE = "Target Support Files/fluttertoast/ResourceBundle-fluttertoast_privacy-fluttertoast-Info.plist";
@@ -60069,11 +60205,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB785405265AE0551AA5E8911547EF2A /* webview_flutter_wkwebview.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/webview_flutter_wkwebview";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = webview_flutter_wkwebview;
 				INFOPLIST_FILE = "Target Support Files/webview_flutter_wkwebview/ResourceBundle-webview_flutter_wkwebview_privacy-webview_flutter_wkwebview-Info.plist";
@@ -60091,10 +60229,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BF3D1581EDB37D4BB478F1BF0D9B738 /* AppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = AppAuth;
 				INFOPLIST_FILE = "Target Support Files/AppAuth/ResourceBundle-AppAuthCore_Privacy-AppAuth-Info.plist";
@@ -60111,10 +60251,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB6FA98EA28AD5A548FA35B92C6EBAD8 /* url_launcher_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/url_launcher_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = url_launcher_ios;
 				INFOPLIST_FILE = "Target Support Files/url_launcher_ios/ResourceBundle-url_launcher_ios_privacy-url_launcher_ios-Info.plist";
@@ -60131,11 +60273,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 700BE58F50C4733591C29DEDB3AA5DBA /* abseil.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/abseil";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = absl;
 				INFOPLIST_FILE = "Target Support Files/abseil/ResourceBundle-xcprivacy-abseil-Info.plist";
@@ -60153,10 +60297,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAE1208BA3CD0F0D60448CB6FB8EFA64 /* leveldb-library.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/leveldb-library";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = leveldb;
 				INFOPLIST_FILE = "Target Support Files/leveldb-library/ResourceBundle-leveldb_Privacy-leveldb-library-Info.plist";
@@ -60174,6 +60320,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFF0AEFA80518809FB7FB91AE4635AEF /* connectivity.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60229,10 +60376,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D61ADD3BCEDC4F1B2B261789C9B40BE /* GTMAppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMAppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMAppAuth;
 				INFOPLIST_FILE = "Target Support Files/GTMAppAuth/ResourceBundle-GTMAppAuth_Privacy-GTMAppAuth-Info.plist";
@@ -60249,10 +60398,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98A0B6E61EAE2D4824FBAF34C80004B8 /* FirebaseInstallations.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseInstallations";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseInstallations;
 				INFOPLIST_FILE = "Target Support Files/FirebaseInstallations/ResourceBundle-FirebaseInstallations_Privacy-FirebaseInstallations-Info.plist";
@@ -60332,6 +60483,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07F0EB6AFEA4A135C3BE1C1CF2FB8027 /* FirebaseSharedSwift.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60371,6 +60523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1889662BC6B2824501BE4F216D6E7FB2 /* FirebaseCore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60410,10 +60563,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C0BF56AACD23A880961760B682D34CD /* FirebaseFirestoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestoreInternal/ResourceBundle-FirebaseFirestoreInternal_Privacy-FirebaseFirestoreInternal-Info.plist";
@@ -60430,10 +60585,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31656DEE065D968ADE7EF9AF55EC555B /* FirebaseCoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreInternal/ResourceBundle-FirebaseCoreInternal_Privacy-FirebaseCoreInternal-Info.plist";
@@ -60450,6 +60607,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6152A9531519590A4468C5813F9510E7 /* FirebaseAppCheckInterop.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60490,10 +60648,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E58757FE6E538D6CE1B477EC42BA567 /* GTMSessionFetcher.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Full_Privacy-GTMSessionFetcher-Info.plist";
@@ -60511,11 +60671,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C0BF56AACD23A880961760B682D34CD /* FirebaseFirestoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestoreInternal/ResourceBundle-FirebaseFirestoreInternal_Privacy-FirebaseFirestoreInternal-Info.plist";
@@ -60533,6 +60695,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EB34A39AA3497350612AE2870271F76 /* flutter_native_timezone.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60589,6 +60752,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C9A4099FD3AA22944A9E742232B1960 /* FirebaseAuthInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -60629,6 +60793,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6BFE84A14E5C6326B2628EE373C3D23 /* just_audio.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -60686,11 +60851,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC40D1EA7F3F40CC6D32D0F2B4CC2BC9 /* google_sign_in_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/google_sign_in_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = google_sign_in_ios;
 				INFOPLIST_FILE = "Target Support Files/google_sign_in_ios/ResourceBundle-google_sign_in_ios_privacy-google_sign_in_ios-Info.plist";
@@ -60708,10 +60875,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FE8D56541D1882E1E0BFF4665ADAE9A /* FirebaseFirestore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/ResourceBundle-FirebaseFirestore_Privacy-FirebaseFirestore-Info.plist";
@@ -60729,6 +60898,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B8AF7FB01B7546AF9963C6AED4460 /* SDWebImage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -60768,11 +60938,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D61ADD3BCEDC4F1B2B261789C9B40BE /* GTMAppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMAppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMAppAuth;
 				INFOPLIST_FILE = "Target Support Files/GTMAppAuth/ResourceBundle-GTMAppAuth_Privacy-GTMAppAuth-Info.plist";
@@ -60790,11 +60962,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Full_Privacy-GTMSessionFetcher-Info.plist";
@@ -60812,10 +60986,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBDE26B8F250F079A9927C69A0A0371E /* DKPhotoGallery.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKPhotoGallery";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKPhotoGallery;
 				INFOPLIST_FILE = "Target Support Files/DKPhotoGallery/ResourceBundle-DKPhotoGallery-DKPhotoGallery-Info.plist";
@@ -60833,10 +61009,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47FCBE9AB728FFE4691FE6C585DBB422 /* video_player_avfoundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/video_player_avfoundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = video_player_avfoundation;
 				INFOPLIST_FILE = "Target Support Files/video_player_avfoundation/ResourceBundle-video_player_avfoundation_privacy-video_player_avfoundation-Info.plist";
@@ -60853,11 +61031,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52B11BC3558228E7FF3F371AB31E3402 /* Reachability.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Reachability";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = Reachability;
 				INFOPLIST_FILE = "Target Support Files/Reachability/ResourceBundle-Reachability_Privacy-Reachability-Info.plist";
@@ -60875,6 +61055,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76520A52C54BF2454A97FFDF1384DD0D /* audio_session.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -60932,6 +61113,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7609928EFF3FFD7D80D8FCBDF2D6652 /* libwebp.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -60971,6 +61153,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89D25D2FBE373D91A297F6367F949B6E /* file_picker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61029,10 +61212,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B8AF7FB01B7546AF9963C6AED4460 /* SDWebImage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SDWebImage";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SDWebImage;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/ResourceBundle-SDWebImage-SDWebImage-Info.plist";
@@ -61049,10 +61234,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2501278C848C94F1B8F8201D22BCF64 /* FirebaseCoreExtension.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreExtension";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreExtension;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreExtension/ResourceBundle-FirebaseCoreExtension_Privacy-FirebaseCoreExtension-Info.plist";
@@ -61069,10 +61256,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4AC4C990AF8DF8506A462821E23CC22 /* PromisesObjC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PromisesObjC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FBLPromises;
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/ResourceBundle-FBLPromises_Privacy-PromisesObjC-Info.plist";
@@ -61089,11 +61278,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6D494465B07A2BD3825CB53A809C893 /* FirebaseFirestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/ResourceBundle-FirebaseFirestore_Privacy-FirebaseFirestore-Info.plist";
@@ -61111,6 +61302,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B18D4C398123621BFD055E720471475 /* FirebaseSharedSwift.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61150,6 +61342,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61188,6 +61381,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00FE7C1A21AFB93B64507E949434E98F /* firebase_messaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61246,6 +61440,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4AC4C990AF8DF8506A462821E23CC22 /* PromisesObjC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -61283,6 +61478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F941BA24FE454786FD903240ED3C1B9C /* just_audio.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61340,6 +61536,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BBD498CE2DD02314069D03C45486AEA /* leveldb-library.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61380,10 +61577,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05382FDCCB4C4EF58F9F6973294F212C /* path_provider_foundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/path_provider_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = path_provider_foundation;
 				INFOPLIST_FILE = "Target Support Files/path_provider_foundation/ResourceBundle-path_provider_foundation_privacy-path_provider_foundation-Info.plist";
@@ -61401,10 +61600,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87C600F5858E5B3A99011A67EA3325FF /* FirebaseInstallations.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseInstallations";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseInstallations;
 				INFOPLIST_FILE = "Target Support Files/FirebaseInstallations/ResourceBundle-FirebaseInstallations_Privacy-FirebaseInstallations-Info.plist";
@@ -61421,6 +61622,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB57E13C18EF09745D633630BB95045A /* RecaptchaInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61461,6 +61663,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9225118E4A2B4880DC770E39E06BEFA /* audio_session.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61518,6 +61721,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB6FA98EA28AD5A548FA35B92C6EBAD8 /* url_launcher_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61570,6 +61774,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3D31180B0B277EF4BE78B73F82847A0 /* video_thumbnail.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61626,6 +61831,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A5C440364546717099FD739BEF1AD9B /* Reachability.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61666,6 +61872,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80AEA162A4596A25F1A5A517E6CB29AE /* FirebaseCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61707,7 +61914,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -61724,6 +61933,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 484587D6E86A5CB65FB12C47424B16C0 /* GTMAppAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61763,6 +61973,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB6FA98EA28AD5A548FA35B92C6EBAD8 /* url_launcher_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -61815,10 +62026,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B37E0F08D9B39A6569C3E71F879EB76D /* webview_flutter_wkwebview.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/webview_flutter_wkwebview";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = webview_flutter_wkwebview;
 				INFOPLIST_FILE = "Target Support Files/webview_flutter_wkwebview/ResourceBundle-webview_flutter_wkwebview_privacy-webview_flutter_wkwebview-Info.plist";
@@ -61836,6 +62049,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D61ADD3BCEDC4F1B2B261789C9B40BE /* GTMAppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61875,6 +62089,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C20FD6BEADD9CF57F98233FE2D7102D /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -61913,6 +62128,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C4A75B51DBA556F5A5132F72A071EEA /* SwiftyGif.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -61952,6 +62168,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 991F7614F4A663C05267270A169F0B9B /* shared_preferences_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -62006,7 +62223,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -62023,6 +62242,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1E16580F749F74D466C830C3F27C3FC1 /* PromisesObjC.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -62060,6 +62280,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3D31180B0B277EF4BE78B73F82847A0 /* video_thumbnail.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62116,6 +62337,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DAAA091C0EB80289054A8760BAD3204 /* BoringSSL-GRPC.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62156,6 +62378,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93C111F9980A94F5A5D6BC7B0A866827 /* permission_handler_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62213,11 +62436,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BBD498CE2DD02314069D03C45486AEA /* leveldb-library.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/leveldb-library";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = leveldb;
 				INFOPLIST_FILE = "Target Support Files/leveldb-library/ResourceBundle-leveldb_Privacy-leveldb-library-Info.plist";
@@ -62235,10 +62460,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4D040723D96D688DBC0452C0497B2579 /* file_picker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/file_picker";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = file_picker;
 				INFOPLIST_FILE = "Target Support Files/file_picker/ResourceBundle-file_picker_ios_privacy-file_picker-Info.plist";
@@ -62256,11 +62483,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47FCBE9AB728FFE4691FE6C585DBB422 /* video_player_avfoundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/video_player_avfoundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = video_player_avfoundation;
 				INFOPLIST_FILE = "Target Support Files/video_player_avfoundation/ResourceBundle-video_player_avfoundation_privacy-video_player_avfoundation-Info.plist";
@@ -62278,6 +62507,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FB9656111ED96F7471F55C81695360E /* cloud_firestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -62336,11 +62566,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-grpcpp-gRPC-C++-Info.plist";
@@ -62358,11 +62590,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12B8AF7FB01B7546AF9963C6AED4460 /* SDWebImage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SDWebImage";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SDWebImage;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/ResourceBundle-SDWebImage-SDWebImage-Info.plist";
@@ -62380,11 +62614,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87C600F5858E5B3A99011A67EA3325FF /* FirebaseInstallations.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseInstallations";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseInstallations;
 				INFOPLIST_FILE = "Target Support Files/FirebaseInstallations/ResourceBundle-FirebaseInstallations_Privacy-FirebaseInstallations-Info.plist";
@@ -62402,6 +62638,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 179A2A17BCA14EB1D25A6934772118EC /* RecaptchaInterop.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62442,6 +62679,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3C254AEAD728797F5040B1E51C0CD7F /* FirebaseMessaging.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62481,11 +62719,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2501278C848C94F1B8F8201D22BCF64 /* FirebaseCoreExtension.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreExtension";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreExtension;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreExtension/ResourceBundle-FirebaseCoreExtension_Privacy-FirebaseCoreExtension-Info.plist";
@@ -62503,10 +62743,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3CA4E173E8CDF8722786E6A6911DD61 /* flutter_local_notifications_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/flutter_local_notifications_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = flutter_local_notifications_plus;
 				INFOPLIST_FILE = "Target Support Files/flutter_local_notifications_plus/ResourceBundle-flutter_local_notifications_privacy-flutter_local_notifications_plus-Info.plist";
@@ -62524,6 +62766,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87F7E7CDAF8E4FF7E8F37E926FFE4829 /* AppCheckCore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62563,10 +62806,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E866BDB7B528F63437A2BA6D3D644BA9 /* AppAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = AppAuth;
 				INFOPLIST_FILE = "Target Support Files/AppAuth/ResourceBundle-AppAuthCore_Privacy-AppAuth-Info.plist";
@@ -62584,6 +62829,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89D25D2FBE373D91A297F6367F949B6E /* file_picker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -62642,10 +62888,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E58757FE6E538D6CE1B477EC42BA567 /* GTMSessionFetcher.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Core_Privacy-GTMSessionFetcher-Info.plist";
@@ -62663,10 +62911,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Core_Privacy-GTMSessionFetcher-Info.plist";
@@ -62683,10 +62933,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C471B47EB19526EDD73C2DA467272FA7 /* GoogleSignIn.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
@@ -62704,6 +62956,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D54CC5ED2D72104C3E79812BE26B666 /* sign_in_with_apple.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62759,6 +63012,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF7C713820357E4040D1DE71EC174846 /* share_extend.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62815,11 +63069,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B4FE725DFF53E1F65F34D6FBFF65A51 /* BoringSSL-GRPC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BoringSSL-GRPC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = openssl_grpc;
 				INFOPLIST_FILE = "Target Support Files/BoringSSL-GRPC/ResourceBundle-openssl_grpc-BoringSSL-GRPC-Info.plist";
@@ -62837,10 +63093,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BBD498CE2DD02314069D03C45486AEA /* leveldb-library.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/leveldb-library";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = leveldb;
 				INFOPLIST_FILE = "Target Support Files/leveldb-library/ResourceBundle-leveldb_Privacy-leveldb-library-Info.plist";
@@ -62857,6 +63115,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E58757FE6E538D6CE1B477EC42BA567 /* GTMSessionFetcher.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62895,6 +63154,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C4A75B51DBA556F5A5132F72A071EEA /* SwiftyGif.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -62934,6 +63194,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F3C9CFD2BF7A45015844C1A71DAC425D /* sign_in_with_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -62990,6 +63251,7 @@
 			baseConfigurationReference = 167F1E5A155A90F6D091BB034814E7C0 /* Pods-Runner.profile.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63112,6 +63374,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FB3F083637D7CF9F63A40D1A28513E2 /* share_extend.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63168,6 +63431,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB785405265AE0551AA5E8911547EF2A /* webview_flutter_wkwebview.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63220,10 +63484,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
@@ -63240,6 +63506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C0BF56AACD23A880961760B682D34CD /* FirebaseFirestoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63279,6 +63546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3CA4E173E8CDF8722786E6A6911DD61 /* flutter_local_notifications_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63335,10 +63603,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8B2BE0A2C4A18D398D575D311D57025 /* url_launcher_ios.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/url_launcher_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = url_launcher_ios;
 				INFOPLIST_FILE = "Target Support Files/url_launcher_ios/ResourceBundle-url_launcher_ios_privacy-url_launcher_ios-Info.plist";
@@ -63356,6 +63626,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31656DEE065D968ADE7EF9AF55EC555B /* FirebaseCoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63396,11 +63667,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DEBF485699338FAAE65350EF1416B5D /* package_info_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/package_info_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = package_info_plus;
 				INFOPLIST_FILE = "Target Support Files/package_info_plus/ResourceBundle-package_info_plus_privacy-package_info_plus-Info.plist";
@@ -63418,6 +63691,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F0C2433C6E59C808182761C51253424 /* firebase_core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63476,10 +63750,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5053B2CC4357C1320F126E2BB7C82568 /* DKImagePickerController.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKImagePickerController";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKImagePickerController;
 				INFOPLIST_FILE = "Target Support Files/DKImagePickerController/ResourceBundle-DKImagePickerController-DKImagePickerController-Info.plist";
@@ -63497,6 +63773,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB1926B396A4B48DF9F7785E229E72DB /* FirebaseStorage.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63536,10 +63813,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84506F6A9A2A7EB73FE340DA05526F18 /* flutter_local_notifications_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/flutter_local_notifications_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = flutter_local_notifications_plus;
 				INFOPLIST_FILE = "Target Support Files/flutter_local_notifications_plus/ResourceBundle-flutter_local_notifications_privacy-flutter_local_notifications_plus-Info.plist";
@@ -63556,6 +63835,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 754142C15224DB49DD61F9282F9DD746 /* wakelock_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63613,10 +63893,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6D494465B07A2BD3825CB53A809C893 /* FirebaseFirestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseFirestore";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseFirestore;
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/ResourceBundle-FirebaseFirestore_Privacy-FirebaseFirestore-Info.plist";
@@ -63633,6 +63915,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B9874574609ABBD825D18C3370A34F0 /* GoogleUtilities.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63734,6 +64017,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC77B3AB52645E97073B501BFA94EB4B /* video_player_avfoundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63791,6 +64075,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B4FE725DFF53E1F65F34D6FBFF65A51 /* BoringSSL-GRPC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63831,10 +64116,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8E9DF360779DC56154BFF2018964BA5 /* gRPC-C++.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-grpcpp-gRPC-C++-Info.plist";
@@ -63851,10 +64138,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A5C440364546717099FD739BEF1AD9B /* Reachability.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Reachability";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = Reachability;
 				INFOPLIST_FILE = "Target Support Files/Reachability/ResourceBundle-Reachability_Privacy-Reachability-Info.plist";
@@ -63872,6 +64161,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05382FDCCB4C4EF58F9F6973294F212C /* path_provider_foundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -63925,10 +64215,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F83D756EEB084181DE4C3CC28444AE88 /* gRPC-C++.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpcpp;
 				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-grpcpp-gRPC-C++-Info.plist";
@@ -63946,6 +64238,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52B11BC3558228E7FF3F371AB31E3402 /* Reachability.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -63986,6 +64279,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F38789F159E3680DEB48F65FA034C57 /* FirebaseAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64025,10 +64319,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DEBF485699338FAAE65350EF1416B5D /* package_info_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/package_info_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = package_info_plus;
 				INFOPLIST_FILE = "Target Support Files/package_info_plus/ResourceBundle-package_info_plus_privacy-package_info_plus-Info.plist";
@@ -64045,10 +64341,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33418DAC24CDA459F7A46F27D207253A /* fluttertoast.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/fluttertoast";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = fluttertoast;
 				INFOPLIST_FILE = "Target Support Files/fluttertoast/ResourceBundle-fluttertoast_privacy-fluttertoast-Info.plist";
@@ -64066,6 +64364,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52B11BC3558228E7FF3F371AB31E3402 /* Reachability.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64106,10 +64405,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F38789F159E3680DEB48F65FA034C57 /* FirebaseAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseAuth;
 				INFOPLIST_FILE = "Target Support Files/FirebaseAuth/ResourceBundle-FirebaseAuth_Privacy-FirebaseAuth-Info.plist";
@@ -64126,6 +64427,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4BB8F7C7C9944741261E24DE8BBB639 /* firebase_core.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -64186,7 +64488,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -64203,10 +64507,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A9FD80BFF81363D448B5AB51B06B9F /* fluttertoast.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/fluttertoast";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = fluttertoast;
 				INFOPLIST_FILE = "Target Support Files/fluttertoast/ResourceBundle-fluttertoast_privacy-fluttertoast-Info.plist";
@@ -64223,6 +64529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15E8B6A263DA788DCF70FDD370BBCFD0 /* SDWebImage.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -64262,6 +64569,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3331B9A3A4AF97296ACE2A9776C86742 /* nanopb.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64302,6 +64610,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31656DEE065D968ADE7EF9AF55EC555B /* FirebaseCoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64342,6 +64651,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76520A52C54BF2454A97FFDF1384DD0D /* audio_session.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -64399,6 +64709,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E866BDB7B528F63437A2BA6D3D644BA9 /* AppAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -64437,6 +64748,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3F9E899F7EC834808B3A43D0BA1DE4F /* abseil.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -64476,6 +64788,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EB34A39AA3497350612AE2870271F76 /* flutter_native_timezone.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64532,6 +64845,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A9FD80BFF81363D448B5AB51B06B9F /* fluttertoast.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64587,10 +64901,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3F9E899F7EC834808B3A43D0BA1DE4F /* abseil.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/abseil";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = absl;
 				INFOPLIST_FILE = "Target Support Files/abseil/ResourceBundle-xcprivacy-abseil-Info.plist";
@@ -64608,6 +64924,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E83DE1C85C39FBBDC771602CE32129D /* firebase_storage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -64666,6 +64983,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 050DBD0F132A126D61BFCB361B1DAB42 /* DKPhotoGallery.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -64705,6 +65023,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E83DE1C85C39FBBDC771602CE32129D /* firebase_storage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -64763,6 +65082,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21C13DA422716F642F4EB1757D2F14D9 /* GoogleUtilities.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64802,10 +65122,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B9874574609ABBD825D18C3370A34F0 /* GoogleUtilities.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleUtilities";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleUtilities;
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/ResourceBundle-GoogleUtilities_Privacy-GoogleUtilities-Info.plist";
@@ -64822,6 +65144,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A42C798ECAC4A57C6026E717B7C6EA0E /* FirebaseAuthInterop.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64862,6 +65185,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDD83E7BAF71ED9D603B83A1B7304E91 /* AppCheckCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64901,6 +65225,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C471B47EB19526EDD73C2DA467272FA7 /* GoogleSignIn.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -64939,10 +65264,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 754142C15224DB49DD61F9282F9DD746 /* wakelock_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/wakelock_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = wakelock_plus;
 				INFOPLIST_FILE = "Target Support Files/wakelock_plus/ResourceBundle-wakelock_plus_privacy-wakelock_plus-Info.plist";
@@ -64959,10 +65286,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00B517C49C49096F116BD73A1D75CA5 /* gRPC-Core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-Core";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpc;
 				INFOPLIST_FILE = "Target Support Files/gRPC-Core/ResourceBundle-grpc-gRPC-Core-Info.plist";
@@ -64979,6 +65308,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FE8D56541D1882E1E0BFF4665ADAE9A /* FirebaseFirestore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65018,6 +65348,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5053B2CC4357C1320F126E2BB7C82568 /* DKImagePickerController.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -65057,6 +65388,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80AEA162A4596A25F1A5A517E6CB29AE /* FirebaseCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65096,6 +65428,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4D040723D96D688DBC0452C0497B2579 /* file_picker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -65154,10 +65487,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC77B3AB52645E97073B501BFA94EB4B /* video_player_avfoundation.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/video_player_avfoundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = video_player_avfoundation;
 				INFOPLIST_FILE = "Target Support Files/video_player_avfoundation/ResourceBundle-video_player_avfoundation_privacy-video_player_avfoundation-Info.plist";
@@ -65175,6 +65510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB785405265AE0551AA5E8911547EF2A /* webview_flutter_wkwebview.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -65227,10 +65563,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52B11BC3558228E7FF3F371AB31E3402 /* Reachability.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Reachability";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = Reachability;
 				INFOPLIST_FILE = "Target Support Files/Reachability/ResourceBundle-Reachability_Privacy-Reachability-Info.plist";
@@ -65247,6 +65585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C0BF56AACD23A880961760B682D34CD /* FirebaseFirestoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65286,6 +65625,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4806ED8EAA51B3DC3C41A2A302F9C88 /* FirebaseAppCheckInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65326,11 +65666,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 754142C15224DB49DD61F9282F9DD746 /* wakelock_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/wakelock_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = wakelock_plus;
 				INFOPLIST_FILE = "Target Support Files/wakelock_plus/ResourceBundle-wakelock_plus_privacy-wakelock_plus-Info.plist";
@@ -65348,11 +65690,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BF3D1581EDB37D4BB478F1BF0D9B738 /* AppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/AppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = AppAuth;
 				INFOPLIST_FILE = "Target Support Files/AppAuth/ResourceBundle-AppAuthCore_Privacy-AppAuth-Info.plist";
@@ -65370,11 +65714,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00FE7C1A21AFB93B64507E949434E98F /* firebase_messaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/firebase_messaging";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = firebase_messaging;
 				INFOPLIST_FILE = "Target Support Files/firebase_messaging/ResourceBundle-firebase_messaging_Privacy-firebase_messaging-Info.plist";
@@ -65392,6 +65738,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93C111F9980A94F5A5D6BC7B0A866827 /* permission_handler_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65449,11 +65796,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 991F7614F4A663C05267270A169F0B9B /* shared_preferences_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/shared_preferences_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = shared_preferences_foundation;
 				INFOPLIST_FILE = "Target Support Files/shared_preferences_foundation/ResourceBundle-shared_preferences_foundation_privacy-shared_preferences_foundation-Info.plist";
@@ -65471,10 +65820,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 700BE58F50C4733591C29DEDB3AA5DBA /* abseil.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/abseil";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = absl;
 				INFOPLIST_FILE = "Target Support Files/abseil/ResourceBundle-xcprivacy-abseil-Info.plist";
@@ -65491,6 +65842,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98A0B6E61EAE2D4824FBAF34C80004B8 /* FirebaseInstallations.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65530,10 +65882,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B4FE725DFF53E1F65F34D6FBFF65A51 /* BoringSSL-GRPC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BoringSSL-GRPC";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = openssl_grpc;
 				INFOPLIST_FILE = "Target Support Files/BoringSSL-GRPC/ResourceBundle-openssl_grpc-BoringSSL-GRPC-Info.plist";
@@ -65550,6 +65904,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E55B35A23F3B96E28C811BEEF02D3776 /* GoogleDataTransport.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65589,6 +65944,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 754142C15224DB49DD61F9282F9DD746 /* wakelock_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -65646,6 +66002,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70C2A47C65DF7A361C4D3A8F273FA11B /* SwiftyGif.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -65685,10 +66042,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3331B9A3A4AF97296ACE2A9776C86742 /* nanopb.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/nanopb";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = nanopb;
 				INFOPLIST_FILE = "Target Support Files/nanopb/ResourceBundle-nanopb_Privacy-nanopb-Info.plist";
@@ -65706,6 +66065,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2501278C848C94F1B8F8201D22BCF64 /* FirebaseCoreExtension.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65746,6 +66106,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47FCBE9AB728FFE4691FE6C585DBB422 /* video_player_avfoundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -65803,10 +66164,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 484587D6E86A5CB65FB12C47424B16C0 /* GTMAppAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMAppAuth";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMAppAuth;
 				INFOPLIST_FILE = "Target Support Files/GTMAppAuth/ResourceBundle-GTMAppAuth_Privacy-GTMAppAuth-Info.plist";
@@ -65824,6 +66187,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C9A4099FD3AA22944A9E742232B1960 /* FirebaseAuthInterop.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -65864,11 +66228,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB6FA98EA28AD5A548FA35B92C6EBAD8 /* url_launcher_ios.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/url_launcher_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = url_launcher_ios;
 				INFOPLIST_FILE = "Target Support Files/url_launcher_ios/ResourceBundle-url_launcher_ios_privacy-url_launcher_ios-Info.plist";
@@ -65886,10 +66252,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89D25D2FBE373D91A297F6367F949B6E /* file_picker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/file_picker";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = file_picker;
 				INFOPLIST_FILE = "Target Support Files/file_picker/ResourceBundle-file_picker_ios_privacy-file_picker-Info.plist";
@@ -65906,10 +66274,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08E084195BF0D3EE30DCD294DE2D5D81 /* package_info_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/package_info_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = package_info_plus;
 				INFOPLIST_FILE = "Target Support Files/package_info_plus/ResourceBundle-package_info_plus_privacy-package_info_plus-Info.plist";
@@ -65927,10 +66297,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FD3D9AB60AEDBBC5485C0964D18FBB8 /* GoogleDataTransport.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleDataTransport";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleDataTransport;
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/ResourceBundle-GoogleDataTransport_Privacy-GoogleDataTransport-Info.plist";
@@ -65948,6 +66320,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A9FD80BFF81363D448B5AB51B06B9F /* fluttertoast.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66003,11 +66376,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C6F41952AF68FA9BC2067E22457704E /* DKImagePickerController.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKImagePickerController";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKImagePickerController;
 				INFOPLIST_FILE = "Target Support Files/DKImagePickerController/ResourceBundle-DKImagePickerController-DKImagePickerController-Info.plist";
@@ -66025,6 +66400,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6D494465B07A2BD3825CB53A809C893 /* FirebaseFirestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66066,7 +66442,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -66083,11 +66461,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93C111F9980A94F5A5D6BC7B0A866827 /* permission_handler_apple.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/permission_handler_apple";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = permission_handler_apple;
 				INFOPLIST_FILE = "Target Support Files/permission_handler_apple/ResourceBundle-permission_handler_apple_privacy-permission_handler_apple-Info.plist";
@@ -66105,10 +66485,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA070C9BFD55FD6E33FC894095D8B0E7 /* path_provider_foundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/path_provider_foundation";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = path_provider_foundation;
 				INFOPLIST_FILE = "Target Support Files/path_provider_foundation/ResourceBundle-path_provider_foundation_privacy-path_provider_foundation-Info.plist";
@@ -66125,10 +66507,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 050DBD0F132A126D61BFCB361B1DAB42 /* DKPhotoGallery.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DKPhotoGallery";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = DKPhotoGallery;
 				INFOPLIST_FILE = "Target Support Files/DKPhotoGallery/ResourceBundle-DKPhotoGallery-DKPhotoGallery-Info.plist";
@@ -66145,10 +66529,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D9567C5F5B1491D6E837B5B375896B4 /* FirebaseCoreExtension.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreExtension";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreExtension;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreExtension/ResourceBundle-FirebaseCoreExtension_Privacy-FirebaseCoreExtension-Info.plist";
@@ -66166,10 +66552,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C4A75B51DBA556F5A5132F72A071EEA /* SwiftyGif.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftyGif";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = SwiftyGif;
 				INFOPLIST_FILE = "Target Support Files/SwiftyGif/ResourceBundle-SwiftyGif-SwiftyGif-Info.plist";
@@ -66186,10 +66574,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EAD00ADDC737B6FEBB011E4E50633CF /* nanopb.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/nanopb";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = nanopb;
 				INFOPLIST_FILE = "Target Support Files/nanopb/ResourceBundle-nanopb_Privacy-nanopb-Info.plist";
@@ -66206,6 +66596,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 093486B732796FB607DCDFDA72EA5B20 /* gRPC-Core.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66246,6 +66637,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FB3F083637D7CF9F63A40D1A28513E2 /* share_extend.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66302,6 +66694,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 957D49ECE14B60EF99F885D35C67A6B8 /* libwebp.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -66341,6 +66734,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 700BE58F50C4733591C29DEDB3AA5DBA /* abseil.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -66380,6 +66774,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76199645FC2623E38F241134136FD409 /* FirebaseStorage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66419,6 +66814,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 18668C093B1FA7A70F18E517BF4BEB3A /* firebase_auth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -66477,10 +66873,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 093486B732796FB607DCDFDA72EA5B20 /* gRPC-Core.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-Core";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = grpc;
 				INFOPLIST_FILE = "Target Support Files/gRPC-Core/ResourceBundle-grpc-gRPC-Core-Info.plist";
@@ -66498,6 +66896,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33418DAC24CDA459F7A46F27D207253A /* fluttertoast.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66553,6 +66952,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 957D49ECE14B60EF99F885D35C67A6B8 /* libwebp.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -66592,6 +66992,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6380D1F9E3319A38488470983AC0D447 /* firebase_messaging.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -66650,6 +67051,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BF3D1581EDB37D4BB478F1BF0D9B738 /* AppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -66688,6 +67090,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D9567C5F5B1491D6E837B5B375896B4 /* FirebaseCoreExtension.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66728,11 +67131,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31656DEE065D968ADE7EF9AF55EC555B /* FirebaseCoreInternal.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseCoreInternal";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = FirebaseCoreInternal;
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreInternal/ResourceBundle-FirebaseCoreInternal_Privacy-FirebaseCoreInternal-Info.plist";
@@ -66750,10 +67155,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 874A5493D0ACB04FDB56053B0CD2267E /* GTMSessionFetcher.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Full_Privacy-GTMSessionFetcher-Info.plist";
@@ -66770,11 +67177,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B9874574609ABBD825D18C3370A34F0 /* GoogleUtilities.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleUtilities";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleUtilities;
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/ResourceBundle-GoogleUtilities_Privacy-GoogleUtilities-Info.plist";
@@ -66792,6 +67201,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07F0EB6AFEA4A135C3BE1C1CF2FB8027 /* FirebaseSharedSwift.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -66831,10 +67241,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21C13DA422716F642F4EB1757D2F14D9 /* GoogleUtilities.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleUtilities";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleUtilities;
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/ResourceBundle-GoogleUtilities_Privacy-GoogleUtilities-Info.plist";
@@ -66852,6 +67264,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DEBF485699338FAAE65350EF1416B5D /* package_info_plus.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -66910,6 +67323,7 @@
 			baseConfigurationReference = 3038D58B1D3F2FDA1398C12BCF14D248 /* Pods-Runner.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -66966,6 +67380,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C6F41952AF68FA9BC2067E22457704E /* DKImagePickerController.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -67005,6 +67420,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47FCBE9AB728FFE4691FE6C585DBB422 /* video_player_avfoundation.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -67062,6 +67478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83B0F1D6781B5C6491B3A450BBFDF5D8 /* firebase_auth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -67120,6 +67537,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E55B35A23F3B96E28C811BEEF02D3776 /* GoogleDataTransport.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -67159,10 +67577,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 140CB958B9422CDAFF87CC55916F0A39 /* google_sign_in_ios.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/google_sign_in_ios";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = google_sign_in_ios;
 				INFOPLIST_FILE = "Target Support Files/google_sign_in_ios/ResourceBundle-google_sign_in_ios_privacy-google_sign_in_ios-Info.plist";
@@ -67180,6 +67600,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C62224E718B3FD3F12789A08CE903F3E /* FirebaseMessaging.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -67219,6 +67640,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BF3D1581EDB37D4BB478F1BF0D9B738 /* AppAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -67259,7 +67681,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -67276,6 +67700,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B4FE725DFF53E1F65F34D6FBFF65A51 /* BoringSSL-GRPC.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -67316,6 +67741,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6D494465B07A2BD3825CB53A809C893 /* FirebaseFirestore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -67355,6 +67781,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A00B517C49C49096F116BD73A1D75CA5 /* gRPC-Core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -67395,6 +67822,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 700BE58F50C4733591C29DEDB3AA5DBA /* abseil.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -67434,11 +67862,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C20FD6BEADD9CF57F98233FE2D7102D /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
@@ -67456,10 +67886,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A69DACB1A2B925EB0E81DAD672C3E2B9 /* wakelock_plus.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_IDENTITY = "-";
 				CODE_SIGNING_REQUIRED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/wakelock_plus";
+				ENABLE_MODULE_VERIFIER = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				IBSC_MODULE = wakelock_plus;
 				INFOPLIST_FILE = "Target Support Files/wakelock_plus/ResourceBundle-wakelock_plus_privacy-wakelock_plus-Info.plist";

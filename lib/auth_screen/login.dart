@@ -10,6 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
+import 'dart:io' show Platform;
+import 'dart:math';
 
 import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
 import 'package:hfn_work/notification/push_notification_handler.dart';
@@ -24,6 +28,21 @@ class _login extends State<login> {
   final TextEditingController passwordController = TextEditingController();
   final formKeyLogin = GlobalKey<FormState>();
   bool showLoader = false;
+
+  /// Generates a cryptographically secure random nonce, to be included in a
+  /// credential request.
+  String generateNonce([int length = 32]) {
+    const charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(length, (_) => charset[random.nextInt(charset.length)]).join();
+  }
+
+  /// Returns the sha256 hash of [input] in hex notation.
+  String sha256ofString(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
+  }
 
   Future<void> userAccess() async {
     if (!formKeyLogin.currentState!.validate()) return;
@@ -160,70 +179,131 @@ class _login extends State<login> {
   Future<void> _handleAppleSignIn() async {
     setState(() => showLoader = true);
     try {
-      final appleCredential =
-      await SignInWithApple.getAppleIDCredential(scopes: [
-        AppleIDAuthorizationScopes.email,
-        AppleIDAuthorizationScopes.fullName,
-      ]);
+      print('Starting Apple Sign In...');
+      
+      // Generate nonce for security
+      final rawNonce = generateNonce();
+      final nonce = sha256ofString(rawNonce);
+      
+      print('Getting Apple ID credential...');
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: nonce,
+      );
+      
+      print('Apple credential received: ${appleCredential.userIdentifier}');
+      print('Email: ${appleCredential.email}');
+      print('Given name: ${appleCredential.givenName}');
+      print('Family name: ${appleCredential.familyName}');
+      
       final oauthCredential = OAuthProvider("apple.com").credential(
         idToken: appleCredential.identityToken,
-        rawNonce: appleCredential.authorizationCode,
+        rawNonce: rawNonce,
+        accessToken: appleCredential.authorizationCode,
       );
-      final userCred = await FirebaseAuth.instance
-          .signInWithCredential(oauthCredential);
+      
+      print('Signing in with Firebase...');
+      final userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
       final user = userCred.user;
+      
       if (user == null) {
+        print('Firebase user is null');
         Fluttertoast.showToast(msg: 'Apple sign-in failed: no user');
         return;
       }
+      
+      print('Firebase user created/signed in: ${user.uid}');
+      print('User email: ${user.email}');
+      print('User displayName: ${user.displayName}');
 
-      // Create display name from Apple credential
+      // Create display name from Apple credential (only available on first sign-in)
       String displayName = '';
       if (appleCredential.givenName != null && appleCredential.familyName != null) {
         displayName = '${appleCredential.givenName} ${appleCredential.familyName}';
+        print('Using Apple credential name: $displayName');
       } else if (appleCredential.givenName != null) {
         displayName = appleCredential.givenName!;
+        print('Using Apple given name: $displayName');
       } else if (user.displayName != null && user.displayName!.isNotEmpty) {
         displayName = user.displayName!;
+        print('Using Firebase displayName: $displayName');
       } else if (user.email != null) {
         // Fallback to email username part
         displayName = user.email!.split('@')[0];
+        print('Using email fallback: $displayName');
+      } else {
+        displayName = 'Apple User';
+        print('Using default fallback name');
       }
 
       final pref = await SharedPreferences.getInstance();
       final usersRef = FirebaseFirestore.instance.collection('user');
-      final query =
-      await usersRef.where('email', isEqualTo: user.email).limit(1).get();
+      
+      // Use the Firebase UID as the document ID for consistency
+      final userDocRef = usersRef.doc(user.uid);
+      final userDoc = await userDocRef.get();
 
-      String userType;
-      if (query.docs.isEmpty) {
-        userType = '0';
-        await usersRef.doc(user.uid).set({
+      String userType = '0';
+      
+      if (!userDoc.exists) {
+        print('Creating new user document...');
+        await userDocRef.set({
           'id': user.uid,
           'user_type': userType,
           'start_date': '',
-          'email': user.email,
+          'email': user.email ?? '',
           'name': displayName,
+          'provider': 'apple',
+          'created_at': FieldValue.serverTimestamp(),
         });
+        print('User document created successfully');
       } else {
-        final data = query.docs.first.data() as Map<String, dynamic>;
+        print('User document already exists, updating if needed...');
+        final data = userDoc.data() as Map<String, dynamic>;
         userType = data['user_type'] ?? '0';
+        
         // Update name if it's empty and we have a display name
+        Map<String, dynamic> updates = {};
         if ((data['name'] == null || data['name'].toString().isEmpty) && displayName.isNotEmpty) {
-          await query.docs.first.reference.update({'name': displayName});
+          updates['name'] = displayName;
+        }
+        if (data['email'] == null || data['email'].toString().isEmpty) {
+          updates['email'] = user.email ?? '';
+        }
+        
+        if (updates.isNotEmpty) {
+          await userDocRef.update(updates);
+          print('User document updated with: $updates');
         }
       }
 
       await pref.setString('user_id', user.uid);
       await pref.setString('user_type', userType);
+      print('SharedPreferences saved');
 
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => bottom_navigation()),
-            (route) => false,
-      );
-    } catch (e) {
-      Fluttertoast.showToast(msg: 'Apple sign-in failed: $e');
+      print('Navigating to app...');
+      if (mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => bottom_navigation()),
+          (route) => false,
+        );
+      }
+    } catch (e, stackTrace) {
+      print('Apple sign-in error: $e');
+      print('Stack trace: $stackTrace');
+      
+      String errorMsg = 'Apple sign-in failed';
+      if (e.toString().contains('cancelled')) {
+        errorMsg = 'Sign-in was cancelled';
+      } else if (e.toString().contains('network')) {
+        errorMsg = 'Network error. Please check your connection.';
+      }
+      
+      Fluttertoast.showToast(msg: errorMsg);
     } finally {
       if (mounted) setState(() => showLoader = false);
     }
@@ -400,9 +480,11 @@ class _login extends State<login> {
               Text('or', style: theme.textTheme.bodyMedium),
               const SizedBox(height: 16),
 
-              // Social row unchanged...
-              Center(
-                  child: GestureDetector(
+              // Social row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
                     onTap: _handleGoogleSignIn,
                     child: Container(
                       width: 50,
@@ -422,20 +504,30 @@ class _login extends State<login> {
                       ),
                     ),
                   ),
-                  // GestureDetector(
-                  //   onTap: _handleAppleSignIn,
-                  //   child: Container(
-                  //     width: 50,
-                  //     height: 50,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white,
-                  //       borderRadius: BorderRadius.circular(12),
-                  //       border: Border.all(color: Color(0xFFCCCCCC)),
-                  //       boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
-                  //     ),
-                  //     child: const Icon(Icons.apple, size: 24, color: Color(0xFF485370)),
-                  //   ),
-                  // ),
+                  if (Platform.isIOS) ...[
+                    const SizedBox(width: 16),
+                    GestureDetector(
+                      onTap: _handleAppleSignIn,
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Color(0xFFCCCCCC)),
+                          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/icons/apple_logo.png',
+                            width: 24,
+                            height: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
               ),
 
               const SizedBox(height: 32),

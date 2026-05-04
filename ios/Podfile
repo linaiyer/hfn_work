@@ -35,8 +35,20 @@ target 'Runner' do
 end
 
 post_install do |installer|
+  # Patch Reachability pod: netinet6/in6.h is private in Xcode 15+, netinet/in.h covers it
+  reachability_file = "#{installer.sandbox.root}/Reachability/Reachability.m"
+  if File.exist?(reachability_file)
+    content = File.read(reachability_file)
+    patched = content.gsub("#import <netinet6/in6.h>\n", '')
+    File.write(reachability_file, patched) if patched != content
+  end
+
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      config.build_settings['ENABLE_MODULE_VERIFIER'] = 'NO'
+    end
     if target.name == 'BoringSSL-GRPC'
       target.source_build_phase.files.each do |file|
         if file.settings && file.settings['COMPILER_FLAGS']
