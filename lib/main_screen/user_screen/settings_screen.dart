@@ -151,63 +151,59 @@ class _settings_screen extends State<settings_screen> {
           }
         }
 
-        // Sign out from Google if signed in with Google
+        // Try to delete Firebase Auth user (may fail if not recently authenticated)
+        try {
+          final user = FirebaseAuth.instance.currentUser;
+          if (user != null) await user.delete();
+        } catch (_) {
+          // Auth user deletion failed — sign out instead, Firestore data is gone
+          try {
+            await FirebaseAuth.instance.signOut();
+          } catch (_) {}
+        }
+
+        // Sign out from Google if applicable
         try {
           await GoogleSignIn().signOut();
-        } catch (e) {
-          // Ignore if not signed in with Google
-        }
+        } catch (_) {}
 
-        // Delete Firebase Auth user
-        final user = FirebaseAuth.instance.currentUser;
-        if (user != null) {
-          await user.delete();
-        }
-
-        // Clear local preferences
+        // Clear local preferences and navigate to login
         await prefs.clear();
 
-        // Close loading dialog
-        Navigator.of(context).pop();
-
-        // Navigate to login screen
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (_) => login()),
-          (route) => false,
-        );
-
-        // Show success message
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'Account deleted successfully',
-              style: TextStyle(fontFamily: 'WorkSans'),
-            ),
-            backgroundColor: Color(0xFF0F75BC),
-          ),
-        );
+        if (mounted) {
+          Navigator.of(context).pop(); // close loading dialog
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => login()),
+            (route) => false,
+          );
+        }
       } catch (e) {
-        // Close loading dialog
-        Navigator.of(context).pop();
-        
-        // Show error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Error deleting account: $e',
-              style: const TextStyle(fontFamily: 'WorkSans'),
+        if (mounted) {
+          Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Error deleting account: $e',
+                style: const TextStyle(fontFamily: 'WorkSans'),
+              ),
+              backgroundColor: Colors.red,
             ),
-            backgroundColor: Colors.red,
-          ),
-        );
+          );
+        }
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final name = profileData?['name'] as String? ?? 'Your Name';
+    final name = () {
+      final n = profileData?['name'] as String?;
+      if (n != null && n.isNotEmpty) return n;
+      final u = profileData?['userName'] as String?;
+      if (u != null && u.isNotEmpty) return u;
+      return 'User';
+    }();
 
     return Scaffold(
       backgroundColor: const Color(0xFFF6F4F5),

@@ -258,15 +258,20 @@ class _create_account extends State<create_account> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xffF6F4F5),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 80),
+              SizedBox(height: h * 0.08),
 
               // Logo
               Center(
@@ -438,7 +443,7 @@ class _create_account extends State<create_account> {
                   ],
                 ),
               ),
-              const Spacer(),
+              const SizedBox(height: 32),
 
               // Footer link
               Center(
@@ -472,9 +477,12 @@ class _create_account extends State<create_account> {
               ),
               const SizedBox(height: 24),
             ],
-          ),
-        ),
-      ),
+          ),        // Column
+        ),          // Padding
+      ),            // ConstrainedBox
+    ),              // Center
+  ),                // SingleChildScrollView
+),                  // SafeArea
     );
   }
 }

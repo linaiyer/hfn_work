@@ -313,14 +313,18 @@ class _login extends State<login> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xffF6F4F5),
       body: SingleChildScrollView(
-        child: Padding(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520),
+            child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             children: [
-              const SizedBox(height: 80),
+              SizedBox(height: h * 0.08),
               Center(
                 child: PhysicalModel(
                   color: Colors.transparent,
@@ -532,6 +536,8 @@ class _login extends State<login> {
 
               const SizedBox(height: 32),
             ],
+          ),
+        ),
           ),
         ),
       ),

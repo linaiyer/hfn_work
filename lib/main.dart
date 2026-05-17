@@ -1,21 +1,19 @@
 import 'dart:async';
-import 'dart:io';
-
-// import 'dart:ui';
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications_plus/flutter_local_notifications_plus.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:hfn_work/auth_screen/splash_screen.dart';
+import 'package:hfn_work/firebase_options.dart';
 import 'package:hfn_work/notification/NotificationPlugin.dart';
 import 'package:hfn_work/notification/push_notification_handler.dart';
 import 'package:rxdart/rxdart.dart';
@@ -42,23 +40,31 @@ String? selectedNotificationPayload;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  try {
+    tz.initializeTimeZones();
+    final String localZone = await FlutterTimezone.getLocalTimezone();
+    try {
+      tz.setLocalLocation(tz.getLocation(localZone));
+    } catch (_) {
+      tz.setLocalLocation(tz.getLocation('UTC'));
+    }
+  } catch (_) {}
 
-  tz.initializeTimeZones();
-  final String localZone = await FlutterNativeTimezone.getLocalTimezone();
-  tz.setLocalLocation((tz.getLocation(localZone)));
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (_) {}
 
-  await Firebase.initializeApp();
-  await LocalNotification().initialize();
-// load saved prefs or fallback
+  try {
+    await LocalNotification().initialize();
+  } catch (_) {}
 
+  try {
+    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  } catch (_) {}
 
-  HttpOverrides.global = MyHttpOverrides();
-
-
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(MyApp());
-  });
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -252,7 +258,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     final botToastBuilder = BotToastInit();
     return MultiProvider(
       providers: [
-        StreamProvider(
+        StreamProvider<List<ConnectivityResult>?>(
           create: (_) => Connectivity().onConnectivityChanged,
           initialData: null,
         ),
@@ -266,8 +272,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           //   DeviceOrientation.portraitUp,
           //   DeviceOrientation.portraitDown,
           // ]);
-          final noInternet = Provider.of<ConnectivityResult?>(context) ==
-              ConnectivityResult.none;
+          final results = Provider.of<List<ConnectivityResult>?>(context);
+          final noInternet =
+              results != null && results.every((r) => r == ConnectivityResult.none);
           if (noInternet) {
             BotToast.showCustomNotification(
               duration: const Duration(milliseconds: 1500),
@@ -343,13 +350,4 @@ class FallbackCupertinoLocalisationsDelegate
 
   @override
   bool shouldReload(FallbackCupertinoLocalisationsDelegate old) => false;
-}
-
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
 }

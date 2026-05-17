@@ -114,7 +114,7 @@ class _home_screen extends State<home_screen> with RouteAware {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F4F5),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -300,7 +300,7 @@ class _home_screen extends State<home_screen> with RouteAware {
                   ),
                 ),
               ),
-              const Spacer(),
+              const SizedBox(height: 24),
             ],
           ),
         ),

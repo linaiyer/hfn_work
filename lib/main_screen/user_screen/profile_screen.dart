@@ -135,115 +135,124 @@ class _profile_screen extends State<profile_screen> with RouteAware {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F4F5),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Row(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final chartHeight = (constraints.maxHeight * 0.42).clamp(180.0, 400.0);
+            return SingleChildScrollView(
+              child: Column(
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => settings_screen()),
-                    ),
-                    child: Image.asset('assets/icons/settings.png', width: 32, height: 32),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.35,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFF485370), width: 2),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => pickAvatar()),
-                      ),
-                      child: ClipOval(
-                        child: avatarUrl != null && avatarUrl.isNotEmpty
-                            ? Image.network(avatarUrl, width: 100, height: 100, fit: BoxFit.cover)
-                            : Image.asset('assets/icons/default_prof.png', width: 100, height: 100),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(name, style: const TextStyle(fontFamily: 'WorkSans', fontSize: 22, fontWeight: FontWeight.w500, color: Color(0xFF485370))),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                'My Progress',
-                style: TextStyle(
-                  fontFamily: 'WorkSans',
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF485370),
-                ),
-              ),
-            ),
-            _legend(),
-            _toggles(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Card(
-                  color: const Color(0xFFF6F4F5),
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: LineChart(
-                      LineChartData(
-                        backgroundColor: Colors.white,
-                        gridData: FlGridData(show: true),
-                        borderData: FlBorderData(show: false),
-                        titlesData: FlTitlesData(
-                          bottomTitles: AxisTitles(
-                            axisNameWidget: thisWeek ? const Text('Days') : const Text('Weeks'),
-                            axisNameSize: 16,
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              interval: 1,
-                              reservedSize: 28,
-                              getTitlesWidget: (value, titleMeta) => Text(value.toInt().toString()),
-                            ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => settings_screen()),
                           ),
-                          leftTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              interval: _chartStep,
-                              reservedSize: 32,
-                              getTitlesWidget: (value, titleMeta) => Text(value.toInt().toString()),
-                            ),
-                          ),
-                          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                          child: Image.asset('assets/icons/settings.png', width: 32, height: 32),
                         ),
-                        minY: 0,
-                        maxY: _chartMaxY,
-                        lineBarsData: [
-                          LineChartBarData(spots: morningSpots, isCurved: true, barWidth: 3, color: const Color(0xFF0F75BC), dotData: FlDotData(show: true)),
-                          LineChartBarData(spots: bedtimeSpots, isCurved: true, barWidth: 3, color: const Color(0xFF333333), dotData: FlDotData(show: true)),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      width: constraints.maxWidth * 0.35,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0xFF485370), width: 2),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => pickAvatar()),
+                            ),
+                            child: ClipOval(
+                              child: avatarUrl != null && avatarUrl.isNotEmpty
+                                  ? Image.network(avatarUrl, width: 100, height: 100, fit: BoxFit.cover)
+                                  : Image.asset('assets/icons/default_prof.png', width: 100, height: 100),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(name, style: const TextStyle(fontFamily: 'WorkSans', fontSize: 22, fontWeight: FontWeight.w500, color: Color(0xFF485370))),
                         ],
                       ),
                     ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'My Progress',
+                      style: TextStyle(
+                        fontFamily: 'WorkSans',
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF485370),
+                      ),
+                    ),
+                  ),
+                  _legend(),
+                  _toggles(),
+                  SizedBox(
+                    height: chartHeight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Card(
+                        color: const Color(0xFFF6F4F5),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: LineChart(
+                            LineChartData(
+                              backgroundColor: Colors.white,
+                              gridData: FlGridData(show: true),
+                              borderData: FlBorderData(show: false),
+                              titlesData: FlTitlesData(
+                                bottomTitles: AxisTitles(
+                                  axisNameWidget: thisWeek ? const Text('Days') : const Text('Weeks'),
+                                  axisNameSize: 16,
+                                  sideTitles: SideTitles(
+                                    showTitles: true,
+                                    interval: 1,
+                                    reservedSize: 28,
+                                    getTitlesWidget: (value, titleMeta) => Text(value.toInt().toString()),
+                                  ),
+                                ),
+                                leftTitles: AxisTitles(
+                                  sideTitles: SideTitles(
+                                    showTitles: true,
+                                    interval: _chartStep,
+                                    reservedSize: 32,
+                                    getTitlesWidget: (value, titleMeta) => Text(value.toInt().toString()),
+                                  ),
+                                ),
+                                topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                              ),
+                              minY: 0,
+                              maxY: _chartMaxY,
+                              lineBarsData: [
+                                LineChartBarData(spots: morningSpots, isCurved: true, barWidth: 3, color: const Color(0xFF0F75BC), dotData: FlDotData(show: true)),
+                                LineChartBarData(spots: bedtimeSpots, isCurved: true, barWidth: 3, color: const Color(0xFF333333), dotData: FlDotData(show: true)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

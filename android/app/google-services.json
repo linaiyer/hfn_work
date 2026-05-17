@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "70034961552-t1vmv3hqug2nj4bf5au61u9t0gflodqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hfnwork.app",
+            "certificate_hash": "cfaa795ae2fb62ba17b575d5ccd7ad7a368e1e07"
+          }
+        },
+        {
           "client_id": "70034961552-8g4ahumb2efot4a44li218mvgtdgqci3.apps.googleusercontent.com",
           "client_type": 3
         }

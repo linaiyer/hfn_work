@@ -12,143 +12,141 @@ class _welcome extends State<welcome> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final h = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        width: double.infinity,
+        height: h,
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0x330F75BC), // 20% top
-              Color(0x33073656), // 20% bottom
-            ],
+            colors: [Color(0x330F75BC), Color(0x33073656)],
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32.0,
-                vertical: 48.0,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Welcome title
-                  Text(
-                    'Welcome to',
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      fontFamily: 'WorkSans',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 30, // increased size
-                      color: Color(0xFF485370),
-                    ),
+          child: SingleChildScrollView(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 520),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 32.0,
+                    vertical: h * 0.05,
                   ),
-                  SizedBox(height: 24),
-
-                  // Logo with shadow
-                  PhysicalModel(
-                    color: Colors.transparent,
-                    shadowColor: Colors.black.withOpacity(0.1),
-                    elevation: 4,
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      fit: BoxFit.contain,
-                      height: 100,
-                    ),
-                  ),
-                  SizedBox(height: 32),
-
-                  // Tagline
-                  Text(
-                    'The Real Work Happens in Silence.',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontFamily: 'WorkSans',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: Color(0xFF485370).withOpacity(0.8),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 32),
-
-                  // Create account button
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => create_account()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0F75BC),
-                      foregroundColor: Color(0xFFFBFBFB),
-                      textStyle: TextStyle(
-                        fontFamily: 'WorkSans',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20, // button text size
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Welcome to',
+                        style: theme.textTheme.titleLarge?.copyWith(
+                          fontFamily: 'WorkSans',
+                          fontWeight: FontWeight.w700,
+                          fontSize: (h * 0.038).clamp(22.0, 34.0),
+                          color: const Color(0xFF485370),
+                        ),
                       ),
-                      minimumSize: Size(double.infinity, 56),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                        side: BorderSide(color: Color(0xFF485370), width: 2),
-                      ),
-                      elevation: 2,
-                    ),
-                    child: Text('Create an account'),
-                  ),
-                  SizedBox(height: 24),
+                      SizedBox(height: h * 0.025),
 
-                  // Log in button
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => login()),
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Color(0xFFFBFBFB),
-                      foregroundColor: Color(0xFF485370),
-                      textStyle: TextStyle(
-                        fontFamily: 'WorkSans',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20, // login text size
+                      PhysicalModel(
+                        color: Colors.transparent,
+                        shadowColor: Colors.black.withOpacity(0.1),
+                        elevation: 4,
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          fit: BoxFit.contain,
+                          height: (h * 0.14).clamp(70.0, 140.0),
+                        ),
                       ),
-                      minimumSize: Size(double.infinity, 56),
-                      side: BorderSide(color: Color(0xFF485370), width: 2),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                      ),
-                      elevation: 1,
-                    ),
-                    child: Text('Log in'),
-                  ),
-                  SizedBox(height: 16),
+                      SizedBox(height: h * 0.035),
 
-                  // Continue as Guest button
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => bottom_navigation()),
-                        (route) => false,
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      foregroundColor: Color(0xFF485370).withOpacity(0.7),
-                      textStyle: TextStyle(
-                        fontFamily: 'WorkSans',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 18,
-                        decoration: TextDecoration.underline,
+                      Text(
+                        'The Real Work Happens in Silence.',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontFamily: 'WorkSans',
+                          fontWeight: FontWeight.w400,
+                          fontSize: (h * 0.022).clamp(14.0, 20.0),
+                          color: const Color(0xFF485370).withOpacity(0.8),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      minimumSize: Size(double.infinity, 48),
-                    ),
-                    child: Text('Continue as Guest'),
+                      SizedBox(height: h * 0.04),
+
+                      ElevatedButton(
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => create_account()),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF0F75BC),
+                          foregroundColor: const Color(0xFFFBFBFB),
+                          textStyle: TextStyle(
+                            fontFamily: 'WorkSans',
+                            fontWeight: FontWeight.w700,
+                            fontSize: (h * 0.024).clamp(15.0, 22.0),
+                          ),
+                          minimumSize: const Size(double.infinity, 52),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28),
+                            side: const BorderSide(
+                                color: Color(0xFF485370), width: 2),
+                          ),
+                          elevation: 2,
+                        ),
+                        child: const Text('Create an account'),
+                      ),
+                      SizedBox(height: h * 0.02),
+
+                      OutlinedButton(
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => login()),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: const Color(0xFFFBFBFB),
+                          foregroundColor: const Color(0xFF485370),
+                          textStyle: TextStyle(
+                            fontFamily: 'WorkSans',
+                            fontWeight: FontWeight.w400,
+                            fontSize: (h * 0.024).clamp(15.0, 22.0),
+                          ),
+                          minimumSize: const Size(double.infinity, 52),
+                          side: const BorderSide(
+                              color: Color(0xFF485370), width: 2),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28),
+                          ),
+                          elevation: 1,
+                        ),
+                        child: const Text('Log in'),
+                      ),
+                      SizedBox(height: h * 0.01),
+
+                      TextButton(
+                        onPressed: () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => bottom_navigation()),
+                          (route) => false,
+                        ),
+                        style: TextButton.styleFrom(
+                          foregroundColor:
+                              const Color(0xFF485370).withOpacity(0.7),
+                          textStyle: TextStyle(
+                            fontFamily: 'WorkSans',
+                            fontWeight: FontWeight.w400,
+                            fontSize: (h * 0.021).clamp(13.0, 19.0),
+                            decoration: TextDecoration.underline,
+                          ),
+                          minimumSize: const Size(double.infinity, 44),
+                        ),
+                        child: const Text('Continue as Guest'),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

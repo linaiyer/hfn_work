@@ -99,7 +99,6 @@ class LocalNotification {
       String body,
       TimeOfDay time,
       ) async {
-    // Cancel any existing notification with this id
     await flutterLocalNotificationsPlugin.cancel(id);
 
     final androidDetails = AndroidNotificationDetails(
@@ -113,17 +112,30 @@ class LocalNotification {
     final platformDetails =
     NotificationDetails(android: androidDetails, iOS: iosDetails);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-      id,
-      title,
-      body,
-      _nextInstanceOfTime(time.hour, time.minute),
-      platformDetails,
-      androidAllowWhileIdle: true,
-      uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
+    // On Android 12+, exact alarms require runtime permission. Fall back to
+    // inexact scheduling if the SCHEDULE_EXACT_ALARM permission isn't granted.
+    try {
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body,
+        _nextInstanceOfTime(time.hour, time.minute),
+        platformDetails,
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+    } catch (_) {
+      await flutterLocalNotificationsPlugin.periodicallyShow(
+        id,
+        title,
+        body,
+        RepeatInterval.daily,
+        platformDetails,
+        androidAllowWhileIdle: true,
+      );
+    }
   }
 
   /// Computes the next occurrence of today at [hour]:[minute], or tomorrow if already passed.

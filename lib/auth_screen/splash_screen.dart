@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hfn_work/auth_screen/welcome.dart';
 import 'package:hfn_work/bottom_shet/bottom_navigation.dart';
 import 'package:hfn_work/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class splash_screen extends StatefulWidget {
   @override
@@ -70,24 +70,15 @@ class _splash_screen extends State<splash_screen> with WidgetsBindingObserver {
   }
 
   void startTimer() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    bool check = pref.get('user_id') != null ? true : false;
-    var userType = pref.get('user_type');
-
-    print('user_type');
-    print(pref.get('user_type'));
-
-    Timer(
-      const Duration(seconds: 5),
-          () => Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => check
-              ? bottom_navigation()
-              : welcome(),
-        ),
-            (route) => false,
+    await Future.delayed(const Duration(seconds: 3));
+    final bool loggedIn = FirebaseAuth.instance.currentUser != null;
+    if (!mounted) return;
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => loggedIn ? bottom_navigation() : welcome(),
       ),
+      (route) => false,
     );
   }
 
