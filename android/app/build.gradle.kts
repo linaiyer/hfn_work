@@ -52,9 +52,11 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // Minification disabled so the release build behaves identically to
+            // the debug builds verified on device. Re-enable with tested
+            // proguard keep rules if download size becomes a concern.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }

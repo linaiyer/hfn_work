@@ -71,7 +71,14 @@ class _splash_screen extends State<splash_screen> with WidgetsBindingObserver {
 
   void startTimer() async {
     await Future.delayed(const Duration(seconds: 3));
-    final bool loggedIn = FirebaseAuth.instance.currentUser != null;
+    if (!mounted) return;
+    // Never let an auth/Firebase error trap the app on the splash screen.
+    bool loggedIn = false;
+    try {
+      loggedIn = FirebaseAuth.instance.currentUser != null;
+    } catch (e) {
+      debugPrint('Splash: auth check failed, continuing as logged out: $e');
+    }
     if (!mounted) return;
     Navigator.pushAndRemoveUntil(
       context,
